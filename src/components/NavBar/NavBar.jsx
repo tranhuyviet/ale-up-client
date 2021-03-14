@@ -35,7 +35,7 @@ const NavBar = () => {
 
     return (
         <HideOnScroll>
-            <AppBar className={classes.appbar} position="sticky" color="transparent">
+            <AppBar className={classes.appbar} position="sticky">
                 <Container>
                     <Toolbar className={classes.toolbar} disableGutters>
                         <Grid container alignItems="center">

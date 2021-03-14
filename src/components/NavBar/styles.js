@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
     appbar: {
-        // backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.primary,
         boxShadow: 'none',
         borderBottom: `1px solid ${theme.palette.grey[300]}`,
@@ -21,11 +21,12 @@ export const useStyles = makeStyles((theme) => ({
         color: theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white,
         transition: 'all 0.3s',
         '&:hover': {
-            color: theme.palette.primary.main,
+            // color: theme.palette.primary.main,
+            // fontWeight: 'bold',
         },
     },
     linkActive: {
-        color: theme.palette.type === 'light' ? theme.palette.primary.main : theme.palette.primary.light,
+        color: theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white,
         fontWeight: 'bold!important',
     },
 }));
