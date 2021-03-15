@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 
 import ProductCard from '../../components/ProductCard/ProductCard';
 
 import { CircularProgress, Container, Grid, Typography, Button } from '@material-ui/core';
 
-import FilterForm from '../../components/FilterForm/FilterForm';
 import { useStyles } from './styles';
 import { Link } from 'react-router-dom';
 import { useUI } from '../../context/uiContext';
@@ -28,8 +27,8 @@ export const PRODUCTS_FRAGMENT = gql`
 `;
 
 export const GET_PRODUCTS = gql`
-    query getProducts($name: String) {
-        products(name: $name) {
+    query getProducts($name: String, $market: String) {
+        products(name: $name, market: $market) {
             ...ProductFragment
         }
     }
@@ -70,7 +69,7 @@ const HomePage = () => {
             </div>
         );
 
-    console.log('variables', variables);
+    // console.log('variables', variables);
 
     return (
         <Container className={classes.container}>

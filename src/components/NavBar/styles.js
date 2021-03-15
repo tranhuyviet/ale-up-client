@@ -29,10 +29,15 @@ export const useStyles = makeStyles((theme) => ({
         color: theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white,
         fontWeight: 'bold!important',
     },
+    // form control: select markets
+    formControl: {
+        width: 200,
+        marginRight: 16,
+    },
     // search input
     inputContainer: {
         position: 'relative',
-        maxWidth: 400,
+        maxWidth: 600,
         width: '100%',
         display: 'flex',
         alignItems: 'center',

@@ -1,10 +1,10 @@
 import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, FormControlLabel, FormGroup, Slide, TextField } from '@material-ui/core';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useUI } from '../../context/uiContext';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { useStyles } from './styles';
 import { gql, useQuery } from '@apollo/client';
-import Pulse from 'react-reveal/Pulse';
+
 import Tada from 'react-reveal/Tada';
 
 const Transition = React.forwardRef(function Transition(props, ref) {

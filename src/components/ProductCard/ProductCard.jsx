@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStyles } from './styles';
 import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
+import noImage from '../../images/placeholder.png';
 
 const ProductCard = ({ product }) => {
     const classes = useStyles();
@@ -13,7 +14,7 @@ const ProductCard = ({ product }) => {
             </div>
             <div className={classes.mediaContainer}>
                 <a href={link} target="_blank" rel="noreferrer">
-                    <CardMedia image={imageUrl} title={name} className={classes.cardMedia} />
+                    <CardMedia image={imageUrl || noImage} title={name} className={classes.cardMedia} />
                 </a>
                 <Typography className={classes.discount}>
                     -{discount}

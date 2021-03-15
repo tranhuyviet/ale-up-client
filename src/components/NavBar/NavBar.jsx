@@ -1,15 +1,15 @@
-import React, { useState, useRef } from 'react';
-import { AppBar, Button, Container, Grid, IconButton, Slide, TextField, Toolbar, Tooltip, useMediaQuery, useScrollTrigger, useTheme } from '@material-ui/core';
+import React, { useRef, useState } from 'react';
+import { AppBar, Container, FormControl, Grid, IconButton, MenuItem, Select, Slide, Toolbar, Tooltip, useScrollTrigger } from '@material-ui/core';
 import { useStyles } from './styles';
 
-import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
+// import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import Brightness4OutlinedIcon from '@material-ui/icons/Brightness4Outlined';
 import Brightness5OutlinedIcon from '@material-ui/icons/Brightness5Outlined';
 
 import { useUI } from '../../context/uiContext';
 // import { NavLink } from 'react-router-dom';
-import MenuBar from '../MenuBar/MenuBar';
+// import MenuBar from '../MenuBar/MenuBar';
 import Logo from '../Logo/Logo';
 
 function HideOnScroll(props) {
@@ -25,11 +25,12 @@ function HideOnScroll(props) {
 
 const NavBar = () => {
     const classes = useStyles();
-    const { toggleTheme, toggleLightDarkTheme, handleFilterOpen, setVariables } = useUI();
-    const [menuOpen, setMenuOpen] = useState(false);
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const { toggleTheme, toggleLightDarkTheme, setVariables } = useUI();
+    // const [menuOpen, setMenuOpen] = useState(false);
+    // const theme = useTheme();
+    // const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const nameRef = useRef('');
+    const [market, setMarket] = useState('all');
 
     const handleToggleTheme = () => {
         toggleLightDarkTheme();
@@ -37,8 +38,11 @@ const NavBar = () => {
 
     const handleSearch = () => {
         // console.log(nameRef.current.value);
-        setVariables({ name: nameRef.current.value });
-        nameRef.current.value = '';
+        setVariables({
+            name: nameRef.current.value,
+            market,
+        });
+        // nameRef.current.value = '';
     };
 
     return (
@@ -66,9 +70,27 @@ const NavBar = () => {
                             )} */}
                                 <div className={classes.inputContainer}>
                                     {/* <SearchOutlinedIcon className={classes.searchIcon} /> */}
+                                    <FormControl className={classes.formControl}>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={market}
+                                            onChange={(e) => {
+                                                setMarket(e.target.value);
+                                                setVariables({ name: nameRef.current.value, market: e.target.value });
+                                                // handleSearch();
+                                            }}
+                                            style={{ textAlign: 'center' }}
+                                        >
+                                            <MenuItem value={'all'}>All Markets</MenuItem>
+                                            <MenuItem value={'604a19dd79c61b14386c2a55'}>Tokmanni</MenuItem>
+                                            <MenuItem value={'604a219479c61b14386c2a57'}>Lidl</MenuItem>
+                                            <MenuItem value={'604c8c6075485445368242b0'}>K-market</MenuItem>
+                                        </Select>
+                                    </FormControl>
                                     <input
                                         type="text"
-                                        placeholder="housut tokmanni, kana k-market,..."
+                                        placeholder="naisten housut, kala lohi,..."
                                         className={classes.searchInput}
                                         ref={nameRef}
                                         onKeyDown={(e) => {
