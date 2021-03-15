@@ -7,6 +7,15 @@ const theme = {
             contrastText: '#ffffff',
         },
     },
+    overrides: {
+        MuiCardContent: {
+            root: {
+                '&:last-child': {
+                    paddingBottom: 8,
+                },
+            },
+        },
+    },
 };
 
 export default theme;

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Logo = ({ onClick }) => {
     const classes = useStyles();
     return (
-        <Typography variant="h6" className={classes.logo} component={Link} to="/home" onClick={onClick}>
+        <Typography variant="h6" className={classes.logo} component={Link} to="/" onClick={onClick}>
             <span className={classes.logoHead}>A</span>
             <span>
                 le-<span className={classes.logoBody}>up</span>

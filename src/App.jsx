@@ -20,6 +20,7 @@ const App = () => {
             <ThemeProvider theme={appTheme}>
                 <CssBaseline />
                 <Navbar />
+                <div style={{ height: 64 }} />
                 <Switch>
                     <Route exact path="/">
                         <Redirect to="/home" />

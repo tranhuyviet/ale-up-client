@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
                     <CardMedia image={imageUrl} title={name} className={classes.cardMedia} />
                 </a>
                 <Typography className={classes.discount}>
-                    {discount}
+                    -{discount}
                     <span className={classes.discountPer}>%</span>
                 </Typography>
             </div>

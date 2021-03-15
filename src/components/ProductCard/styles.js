@@ -2,9 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
     card: {
-        maxWidth: 300,
+        width: 300,
         '&:hover': {
             boxShadow: theme.shadows[5],
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: '100%',
         },
     },
     cardHeader: {
@@ -16,8 +19,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     mediaContainer: {
         width: '100%',
-        height: '100%',
-        padding: '20px 20px 20px 20px',
+        // height: '100%',
+        padding: 20,
         background: theme.palette.common.white,
         position: 'relative',
     },
@@ -39,8 +42,9 @@ export const useStyles = makeStyles((theme) => ({
         fontWeight: 'normal',
     },
     cardMedia: {
-        width: 260,
+        width: 'auto',
         height: 260,
+        margin: '0 auto',
     },
     cardContent: {
         borderTop: `1px solid ${theme.palette.grey[200]}`,
@@ -60,16 +64,16 @@ export const useStyles = makeStyles((theme) => ({
         cursor: 'pointer',
     },
     priceContainer: {
-        paddingTop: 16,
+        paddingTop: 0,
     },
     newPrice: {
         color: theme.palette.error.main,
-        fontSize: 32,
+        fontSize: 28,
         fontWeight: 'bold',
         marginRight: 16,
     },
     oldPrice: {
-        fontSize: 22,
+        fontSize: 20,
         color: theme.palette.grey[500],
         textDecoration: 'line-through',
     },
