@@ -6,6 +6,9 @@ export const useStyles = makeStyles((theme) => ({
         color: theme.palette.text.primary,
         boxShadow: 'none',
         borderBottom: `1px solid ${theme.palette.grey[300]}`,
+        [theme.breakpoints.down('xs')]: {
+            position: 'relative',
+        },
     },
     toolbar: {},
     navlinks: {
@@ -37,10 +40,15 @@ export const useStyles = makeStyles((theme) => ({
     // search input
     inputContainer: {
         position: 'relative',
-        maxWidth: 600,
+        // maxWidth: 600,
         width: '100%',
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
+        [theme.breakpoints.down('xs')]: {
+            position: 'absolute',
+            top: 70,
+        },
     },
     searchInput: {
         padding: '4px 16px 4px 16px',
@@ -53,6 +61,9 @@ export const useStyles = makeStyles((theme) => ({
         color: theme.palette.type === 'light' ? theme.palette.grey[800] : theme.palette.common.white,
         '&::placeholder': {
             color: theme.palette.grey[500],
+            [theme.breakpoints.down('xs')]: {
+                color: 'transparent',
+            },
         },
         backgroundColor: theme.palette.background.paper,
     },

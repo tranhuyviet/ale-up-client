@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AppBar, Container, FormControl, Grid, IconButton, MenuItem, Select, Slide, Toolbar, Tooltip, useScrollTrigger } from '@material-ui/core';
 import { useStyles } from './styles';
 
@@ -25,7 +25,7 @@ function HideOnScroll(props) {
 
 const NavBar = () => {
     const classes = useStyles();
-    const { toggleTheme, toggleLightDarkTheme, setVariables } = useUI();
+    const { toggleTheme, toggleLightDarkTheme, setVariables, variables } = useUI();
     // const [menuOpen, setMenuOpen] = useState(false);
     // const theme = useTheme();
     // const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -44,6 +44,13 @@ const NavBar = () => {
         });
         // nameRef.current.value = '';
     };
+
+    useEffect(() => {
+        if (!variables) {
+            console.log('cac');
+            setMarket('all');
+        }
+    }, [variables]);
 
     return (
         <HideOnScroll>

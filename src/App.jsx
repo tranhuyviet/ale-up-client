@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/NavBar/NavBar';
 import { useUI } from './context/uiContext';
 import HomePage from './pages/HomePage/HomePage';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
     const { toggleTheme } = useUI();
@@ -29,6 +30,7 @@ const App = () => {
                         <HomePage />
                     </Route>
                 </Switch>
+                <Footer />
             </ThemeProvider>
         </BrowserRouter>
     );

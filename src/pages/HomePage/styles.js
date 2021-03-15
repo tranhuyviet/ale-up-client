@@ -14,5 +14,11 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: 24,
         marginTop: 24,
         marginBottom: 24,
+        [theme.breakpoints.down('xs')]: {
+            fontSize: 16,
+        },
+    },
+    loadMoreButton: {
+        marginTop: 8,
     },
 }));
