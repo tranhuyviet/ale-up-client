@@ -90,9 +90,9 @@ const NavBar = () => {
                                             style={{ textAlign: 'center' }}
                                         >
                                             <MenuItem value={'all'}>All Markets</MenuItem>
-                                            <MenuItem value={'604a19dd79c61b14386c2a55'}>Tokmanni</MenuItem>
-                                            <MenuItem value={'604a219479c61b14386c2a57'}>Lidl</MenuItem>
-                                            <MenuItem value={'604c8c6075485445368242b0'}>K-market</MenuItem>
+                                            <MenuItem value={'6051181bb2107cfeb0e3561c'}>Tokmanni</MenuItem>
+                                            <MenuItem value={'60508539ffff95dc4f4ebe8b'}>Lidl</MenuItem>
+                                            <MenuItem value={'6051185fb2107cfeb0e3561d'}>K-market</MenuItem>
                                         </Select>
                                     </FormControl>
                                     <input

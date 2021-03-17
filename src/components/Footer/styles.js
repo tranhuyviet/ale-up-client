@@ -10,6 +10,7 @@ export const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         marginTop: 24,
         paddingTop: 18,
+        backgroundColor: theme.palette.background.paper,
     },
     copy: {
         fontSize: 16,

@@ -1,6 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
+    logoContainer: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    avatar: {
+        width: theme.spacing(8),
+        height: theme.spacing(8),
+    },
     logo: {
         letterSpacing: 1.5,
         fontFamily: 'Nunito, sans-serif',

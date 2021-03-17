@@ -45,9 +45,11 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        overFlow: 'hidden',
         [theme.breakpoints.down('xs')]: {
             position: 'absolute',
             top: 70,
+            width: '90%',
         },
     },
     searchInput: {
