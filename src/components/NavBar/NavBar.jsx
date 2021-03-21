@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { AppBar, Container, FormControl, Grid, IconButton, MenuItem, Select, Slide, Toolbar, Tooltip, useScrollTrigger } from '@material-ui/core';
+import { AppBar, Button, Container, FormControl, Grid, IconButton, MenuItem, Select, Slide, Toolbar, Tooltip, useScrollTrigger } from '@material-ui/core';
 import { useStyles } from './styles';
 
 // import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
@@ -47,22 +47,24 @@ const NavBar = () => {
 
     useEffect(() => {
         if (!variables) {
-            console.log('cac');
             setMarket('all');
         }
     }, [variables]);
 
     return (
-        <HideOnScroll>
-            <AppBar className={classes.appbar} position="fixed">
-                <Container>
-                    <Toolbar className={classes.toolbar} disableGutters>
-                        <Grid container alignItems="center">
-                            <Grid item xs={4} sm={2}>
-                                <Logo />
-                            </Grid>
-                            <Grid item xs={6} sm={8} container justify="center">
-                                {/* {!matches && (
+        // <HideOnScroll>
+        <AppBar className={classes.appbar} position="fixed">
+            <Container className={classes.container}>
+                <Toolbar className={classes.toolbar} disableGutters>
+                    <Grid container alignItems="center">
+                        <Grid item xs={6} sm={4}>
+                            <Logo text />
+                        </Grid>
+                        <Grid item xs={6} sm={8} container justify="flex-end" alignItems="center">
+                            {/* <IconButton>
+                                <SearchOutlinedIcon />
+                            </IconButton> */}
+                            {/* {!matches && (
                                 <div className={classes.navlinks}>
                                     <NavLink to="/home" className={classes.link} activeClassName={classes.linkActive}>
                                         Home
@@ -75,57 +77,58 @@ const NavBar = () => {
                                     </NavLink>
                                 </div>
                             )} */}
-                                <div className={classes.inputContainer}>
-                                    {/* <SearchOutlinedIcon className={classes.searchIcon} /> */}
-                                    <FormControl className={classes.formControl}>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={market}
-                                            onChange={(e) => {
-                                                setMarket(e.target.value);
-                                                setVariables({ name: nameRef.current.value, market: e.target.value });
-                                                // handleSearch();
-                                            }}
-                                            style={{ textAlign: 'center' }}
-                                        >
-                                            <MenuItem value={'all'}>All Markets</MenuItem>
-                                            <MenuItem value={'6051181bb2107cfeb0e3561c'}>Tokmanni</MenuItem>
-                                            <MenuItem value={'60508539ffff95dc4f4ebe8b'}>Lidl</MenuItem>
-                                            <MenuItem value={'6051185fb2107cfeb0e3561d'}>K-market</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                    <input
-                                        type="text"
-                                        placeholder="naisten housut, kala lohi,..."
-                                        className={classes.searchInput}
-                                        ref={nameRef}
-                                        onKeyDown={(e) => {
-                                            if (e.key === 'Enter') {
-                                                handleSearch();
-                                            }
+                            <div className={classes.inputContainer}>
+                                {/* <SearchOutlinedIcon className={classes.searchIcon} /> */}
+                                <FormControl className={classes.formControl}>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={market}
+                                        onChange={(e) => {
+                                            setMarket(e.target.value);
+                                            setVariables({ ...variables, name: nameRef.current.value, market: e.target.value });
+                                            // handleSearch();
                                         }}
-                                    />
-                                    <IconButton className={classes.searchButton} onClick={handleSearch}>
-                                        <SearchOutlinedIcon />
-                                    </IconButton>
-                                    {/* <Button startIcon={<SearchOutlinedIcon />} className={classes.searchButton} variant="contained">
-                                        Search
-                                    </Button> */}
-                                </div>
-                            </Grid>
-                            <Grid item xs={2} sm={2} container justify="flex-end">
-                                {/* <Tooltip title="Search products"> */}
-                                {/* <IconButton color="inherit" onClick={() => handleFilterOpen(true)}>
+                                        style={{ textAlign: 'center' }}
+                                    >
+                                        <MenuItem value={'all'} style={{ fontWeight: 'bold' }}>
+                                            Kaikki
+                                        </MenuItem>
+                                        <MenuItem value={'6051181bb2107cfeb0e3561c'}>Tokmanni</MenuItem>
+                                        <MenuItem value={'60508539ffff95dc4f4ebe8b'}>Lidl</MenuItem>
+                                        <MenuItem value={'6051185fb2107cfeb0e3561d'}>K-market</MenuItem>
+                                        <MenuItem value={'60525ede08a4e6ea39ca6001'}>Gigantti</MenuItem>
+                                        <MenuItem value={'6053387af67b6d670a1b8488'}>Verkkokauppa</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <input
+                                    type="text"
+                                    placeholder="naisten housut, kala lohi,..."
+                                    className={classes.searchInput}
+                                    ref={nameRef}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            handleSearch();
+                                        }
+                                    }}
+                                />
+                                <IconButton className={classes.searchButton} onClick={handleSearch}>
+                                    <SearchOutlinedIcon />
+                                </IconButton>
+                            </div>
+                        </Grid>
+                        {/* <Grid item xs={2} sm={2} container justify="flex-end"> */}
+                        {/* <Tooltip title="Search products"> */}
+                        {/* <IconButton color="inherit" onClick={() => handleFilterOpen(true)}>
                                     <SearchOutlinedIcon />
                                 </IconButton> */}
-                                {/* </Tooltip> */}
-                                <Tooltip title="Toggle Light/Dark Theme">
-                                    <IconButton onClick={handleToggleTheme} color="inherit">
-                                        {toggleTheme === 'dark' ? <Brightness5OutlinedIcon /> : <Brightness4OutlinedIcon />}
-                                    </IconButton>
-                                </Tooltip>
-                                {/* {matches && (
+                        {/* </Tooltip> */}
+                        {/* <Tooltip title="Toggle Light/Dark Theme">
+                                <IconButton onClick={handleToggleTheme} color="inherit">
+                                    {toggleTheme === 'dark' ? <Brightness5OutlinedIcon /> : <Brightness4OutlinedIcon />}
+                                </IconButton>
+                            </Tooltip> */}
+                        {/* {matches && (
                                     <>
                                         <IconButton color="inherit" onClick={() => setMenuOpen(true)}>
                                             <MenuOutlinedIcon />
@@ -133,12 +136,12 @@ const NavBar = () => {
                                         <MenuBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} anchor="left" />
                                     </>
                                 )} */}
-                            </Grid>
-                        </Grid>
-                    </Toolbar>
-                </Container>
-            </AppBar>
-        </HideOnScroll>
+                        {/* </Grid> */}
+                    </Grid>
+                </Toolbar>
+            </Container>
+        </AppBar>
+        // </HideOnScroll>
     );
 };
 

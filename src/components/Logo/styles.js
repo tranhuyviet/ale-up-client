@@ -8,6 +8,14 @@ export const useStyles = makeStyles((theme) => ({
     avatar: {
         width: theme.spacing(8),
         height: theme.spacing(8),
+        [theme.breakpoints.down('xs')]: {
+            width: theme.spacing(4),
+            height: theme.spacing(4),
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: theme.spacing(6),
+            height: theme.spacing(6),
+        },
     },
     logo: {
         letterSpacing: 1.5,
@@ -26,5 +34,12 @@ export const useStyles = makeStyles((theme) => ({
     },
     logoBody: {
         fontWeight: 'bold',
+        fontSize: 22,
+        [theme.breakpoints.down('sm')]: {
+            fontSize: 20,
+        },
+        [theme.breakpoints.down('xs')]: {
+            fontSize: 18,
+        },
     },
 }));

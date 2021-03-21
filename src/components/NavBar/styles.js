@@ -7,10 +7,25 @@ export const useStyles = makeStyles((theme) => ({
         boxShadow: 'none',
         borderBottom: `1px solid ${theme.palette.grey[300]}`,
         [theme.breakpoints.down('xs')]: {
-            position: 'relative',
+            // position: 'relative',
+            height: 48,
+        },
+        [theme.breakpoints.down('sm')]: {
+            // position: 'relative',
+            height: 52,
         },
     },
-    toolbar: {},
+    container: {
+        height: '100%',
+        [theme.breakpoints.down('xs')]: {
+            // position: 'relative',
+            // height: 40,
+        },
+    },
+    toolbar: {
+        // height: '40px!important',
+        height: '100%',
+    },
     navlinks: {
         display: 'flex',
         alignItems: 'center',
@@ -41,15 +56,17 @@ export const useStyles = makeStyles((theme) => ({
     inputContainer: {
         position: 'relative',
         // maxWidth: 600,
-        width: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         overFlow: 'hidden',
         [theme.breakpoints.down('xs')]: {
-            position: 'absolute',
-            top: 70,
-            width: '90%',
+            position: 'fixed',
+            top: 52,
+            left: 0,
+            width: '100%',
+            background: theme.palette.background.paper,
+            padding: '8px 0 8px 16px',
         },
     },
     searchInput: {

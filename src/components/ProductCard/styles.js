@@ -16,6 +16,12 @@ export const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         padding: '12px 0',
+        [theme.breakpoints.down('xs')]: {
+            padding: 4,
+        },
+    },
+    logo: {
+        maxWidth: '90%',
     },
     mediaContainer: {
         width: '100%',
@@ -23,31 +29,55 @@ export const useStyles = makeStyles((theme) => ({
         padding: 20,
         background: theme.palette.common.white,
         position: 'relative',
+        [theme.breakpoints.down('xs')]: {
+            padding: 8,
+        },
     },
     discount: {
         position: 'absolute',
         top: 10,
         left: 10,
         background: theme.palette.error.main,
-        padding: 10,
-        fontSize: 22,
+        padding: 6,
+        fontSize: 18,
         fontWeight: 'bold',
         color: theme.palette.common.white,
-        borderTopRightRadius: 20,
-        borderBottomLeftRadius: 20,
+        borderTopRightRadius: 16,
+        borderBottomLeftRadius: 16,
         // borderRadius: 100,
+        [theme.breakpoints.down('xs')]: {
+            fontSize: 14,
+            padding: 4,
+            borderTopRightRadius: 12,
+            borderBottomLeftRadius: 12,
+        },
     },
     discountPer: {
         fontSize: 14,
         fontWeight: 'normal',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: 10,
+        },
     },
     cardMedia: {
         width: 'auto',
-        height: 260,
+        height: 246,
         margin: '0 auto',
+        [theme.breakpoints.down('md')]: {
+            height: 140,
+        },
+        [theme.breakpoints.down('sm')]: {
+            height: 120,
+        },
     },
     cardContent: {
         borderTop: `1px solid ${theme.palette.grey[200]}`,
+    },
+    cardContentRoot: {
+        padding: 8,
+        [theme.breakpoints.down('xs')]: {
+            padding: '4px 8px',
+        },
     },
     link: {
         textDecoration: 'none',
@@ -62,19 +92,30 @@ export const useStyles = makeStyles((theme) => ({
         WebkitBoxOrient: 'vertical',
         color: theme.palette.common.colorGreyDark,
         cursor: 'pointer',
+        fontSize: 14,
+        [theme.breakpoints.down('xs')]: {
+            height: 38,
+            fontSize: '12px!important',
+        },
     },
     priceContainer: {
         paddingTop: 0,
     },
     newPrice: {
         color: theme.palette.error.main,
-        fontSize: 28,
+        fontSize: 22,
         fontWeight: 'bold',
         marginRight: 16,
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '14!important',
+        },
     },
     oldPrice: {
-        fontSize: 20,
+        fontSize: 18,
         color: theme.palette.grey[500],
         textDecoration: 'line-through',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '13px!important',
+        },
     },
 }));

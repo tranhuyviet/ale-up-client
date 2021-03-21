@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
     return (
         <Card className={classes.card}>
             <div className={classes.cardHeader}>
-                <img src={market.logo} alt="logo" height="30px" />
+                <img src={market.logo} alt="logo" height="30px" className={classes.logo} />
             </div>
             <div className={classes.mediaContainer}>
                 <a href={link} target="_blank" rel="noreferrer">
@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
                     <span className={classes.discountPer}>%</span>
                 </Typography>
             </div>
-            <CardContent className={classes.cardContent}>
+            <CardContent className={classes.cardContent} classes={{ root: classes.cardContentRoot }}>
                 <a href={link} target="_blank" rel="noreferrer" className={classes.link}>
                     <Typography className={classes.name}>{name}</Typography>
                 </a>
