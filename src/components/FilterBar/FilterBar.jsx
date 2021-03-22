@@ -118,25 +118,27 @@ const FilterBar = ({ total }) => {
                     <Button endIcon={<ArrowDropDownIcon />} variant="outlined" ref={anchorMarketsRef} onClick={handleMarketToggle}>
                         {menuMarketSelected === 'all' ? 'Kaikki Market' : menuMarketSelected}
                     </Button>
-                    <Popper open={openMarketMenu} anchorEl={anchorMarketsRef.current} role={undefined} transition>
+                    <Popper open={openMarketMenu} anchorEl={anchorMarketsRef.current} transition style={{ maxHeight: 300 }}>
                         {({ TransitionProps, placement }) => (
                             <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}>
                                 <Paper>
                                     <ClickAwayListener onClickAway={handleMarketClose}>
                                         <MenuList autoFocusItem={openMarketMenu} id="menu-list-grow">
                                             <MenuItem selected={menuMarketSelected === 'all'} onClick={(e) => handleMenuSelected(e, 'all')}>
-                                                Kaikki Market {menuMarketSelected === 'all' && <CheckIcon className={classes.checkIcon} />}
+                                                {`Kaikki Market (${data.markets.length})`}
+                                                {menuMarketSelected === 'all' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
                                             {data &&
                                                 data.markets &&
-                                                data.markets.map((market) => (
+                                                data.markets.map((market, index) => (
                                                     <MenuItem
                                                         key={market.id}
                                                         onClick={(e) => handleMenuSelected(e, market.name)}
                                                         selected={menuMarketSelected === market.name}
                                                         style={{ textTransform: 'capitalize' }}
                                                     >
-                                                        {market.name} {menuMarketSelected === market.name && <CheckIcon className={classes.checkIcon} />}
+                                                        {`${index + 1}. ${market.name}`}{' '}
+                                                        {menuMarketSelected === market.name && <CheckIcon className={classes.checkIcon} />}
                                                     </MenuItem>
                                                 ))}
                                         </MenuList>

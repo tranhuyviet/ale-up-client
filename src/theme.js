@@ -25,6 +25,13 @@ const theme = {
                 backgroundSize: 'contain',
             },
         },
+        MuiList: {
+            root: {
+                marginTop: 8,
+                maxHeight: 'calc(100vh * 0.64)',
+                overflow: 'overlay',
+            },
+        },
     },
 };
 
