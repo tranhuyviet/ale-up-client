@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
 import { createMuiTheme, CssBaseline } from '@material-ui/core';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/NavBar/NavBar';
 import { useUI } from './context/uiContext';
@@ -20,9 +20,9 @@ const App = () => {
     });
 
     useEffect(() => {
-        ReactGa.initialize('UA-192269482-1');
+        ReactGa.initialize('UA-192778242-1');
         // to report page view
-        ReactGa.pageview('/home');
+        ReactGa.pageview('/');
     }, []);
 
     return (

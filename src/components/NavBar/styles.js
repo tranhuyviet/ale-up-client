@@ -26,75 +26,46 @@ export const useStyles = makeStyles((theme) => ({
         // height: '40px!important',
         height: '100%',
     },
-    navlinks: {
+    logoContainer: {
+        width: 180,
+    },
+    searchContainer: {
+        width: '100%',
         display: 'flex',
+        justifyContent: 'center',
         alignItems: 'center',
-        paddingRight: theme.spacing(1),
-        transition: 'all 0.3s',
     },
-    link: {
-        textDecoration: 'none',
-        marginLeft: theme.spacing(2),
-        fontSize: 16,
-        color: theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white,
-        transition: 'all 0.3s',
-        '&:hover': {
-            // color: theme.palette.primary.main,
-            // fontWeight: 'bold',
-        },
-    },
-    linkActive: {
-        color: theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white,
-        fontWeight: 'bold!important',
-    },
-    // form control: select markets
-    formControl: {
-        width: 200,
-        marginRight: 16,
-    },
-    // search input
     inputContainer: {
         position: 'relative',
-        // maxWidth: 600,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overFlow: 'hidden',
-        [theme.breakpoints.down('xs')]: {
-            position: 'fixed',
-            top: 52,
-            left: 0,
-            width: '100%',
-            background: theme.palette.background.paper,
-            padding: '8px 0 8px 16px',
-        },
+        width: '100%',
+        maxWidth: 400,
     },
     searchInput: {
-        padding: '4px 16px 4px 16px',
+        padding: '4px 16px 4px 38px',
         width: '100%',
-        height: 40,
-        borderRadius: 100,
+        maxWidth: 400,
+        height: 38,
+        borderRadius: 8,
         border: `1px solid ${theme.palette.grey[300]}`,
         outline: 'none',
         fontSize: 16,
         color: theme.palette.type === 'light' ? theme.palette.grey[800] : theme.palette.common.white,
         '&::placeholder': {
             color: theme.palette.grey[500],
-            [theme.breakpoints.down('xs')]: {
-                color: 'transparent',
-            },
+            // [theme.breakpoints.down('xs')]: {
+            //     color: 'transparent',
+            // },
+        },
+        '&:focus': {
+            borderColor: theme.palette.primary.main,
         },
         backgroundColor: theme.palette.background.paper,
     },
     searchIcon: {
         position: 'absolute',
         left: 10,
-        top: 6,
+        top: 7,
         // color: theme.palette.primary.main,
         color: theme.palette.grey[400],
-    },
-    searchButton: {
-        postion: 'absolute',
-        right: 48,
     },
 }));

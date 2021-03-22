@@ -9,8 +9,8 @@ export const useStyles = makeStyles((theme) => ({
         width: theme.spacing(8),
         height: theme.spacing(8),
         [theme.breakpoints.down('xs')]: {
-            width: theme.spacing(4),
-            height: theme.spacing(4),
+            width: theme.spacing(3),
+            height: theme.spacing(3),
         },
         [theme.breakpoints.down('sm')]: {
             width: theme.spacing(6),
@@ -39,7 +39,7 @@ export const useStyles = makeStyles((theme) => ({
             fontSize: 20,
         },
         [theme.breakpoints.down('xs')]: {
-            fontSize: 18,
+            fontSize: 16,
         },
     },
 }));

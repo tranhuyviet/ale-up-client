@@ -5,8 +5,9 @@ export const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         minHeight: '100vh',
         padding: '64px 20px 20px 20px',
+        position: 'relative',
         [theme.breakpoints.down('xs')]: {
-            padding: '108px 8px 8px 8px',
+            padding: '46px 8px 8px 8px',
         },
     },
     gridContainer: {
@@ -27,8 +28,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     error: {
         textAlign: 'center',
-        minHeight: 250,
-        height: '100vh',
+        height: 'calc(100vh - 500px)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -48,5 +48,10 @@ export const useStyles = makeStyles((theme) => ({
             marginTop: 8,
             marginBottom: 8,
         },
+    },
+    shopBag1: {
+        position: 'absolute',
+        left: 0,
+        bottom: 0,
     },
 }));

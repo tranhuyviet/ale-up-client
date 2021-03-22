@@ -3,7 +3,11 @@ import React, { createContext, useReducer, useContext } from 'react';
 const initialState = {
     toggleTheme: 'light',
     filterOpen: false,
-    variables: {},
+    variables: {
+        name: '',
+        sort: 'discount',
+        market: 'all',
+    },
 };
 
 if (localStorage.getItem('themeOfApp')) {
@@ -16,7 +20,11 @@ if (localStorage.getItem('themeOfApp')) {
 const UIContext = createContext({
     toggleTheme: '',
     filterOpen: false,
-    variables: {},
+    variables: {
+        name: '',
+        sort: 'discount',
+        market: 'all',
+    },
     setVariables: (variables) => {},
     toggleLightDarkTheme: () => {},
     handleFilterOpen: (setOpen) => {},

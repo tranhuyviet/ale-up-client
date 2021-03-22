@@ -28,4 +28,7 @@ export const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         color: 'inherit',
     },
+    marketLogo: {
+        padding: 5,
+    },
 }));

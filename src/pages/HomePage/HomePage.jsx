@@ -3,13 +3,14 @@ import { gql, useQuery } from '@apollo/client';
 
 import ProductCard from '../../components/ProductCard/ProductCard';
 
-import { CircularProgress, Container, Grid, Typography, Button } from '@material-ui/core';
+import { CircularProgress, Container, Grid, Typography, Button, useScrollTrigger, Zoom, Fab } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useStyles } from './styles';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useUI } from '../../context/uiContext';
 import FilterBar from '../../components/FilterBar/FilterBar';
-
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+// import shopBagImg1 from '../../images/shop-bag1.png';
 export const PRODUCTS_FRAGMENT = gql`
     fragment ProductFragment on Product {
         id
@@ -42,10 +43,38 @@ export const GET_PRODUCTS = gql`
 
 const LIMIT = 20;
 
-const HomePage = () => {
+function ScrollTop(props) {
+    const { children, window } = props;
+
+    const trigger = useScrollTrigger({
+        target: window ? window() : undefined,
+        disableHysteresis: true,
+        threshold: 100,
+    });
+
+    const handleClick = (event) => {
+        // const anchor = document.getElementById('back-to-top-anchor');
+        const anchor = (event.target.ownerDocument || document).querySelector('#top-anchor');
+
+        if (anchor) {
+            // anchor.scrollIntoView();
+            anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
+    return (
+        <Zoom in={trigger}>
+            <div onClick={handleClick} role="presentation" style={{ position: 'fixed', bottom: 16, right: 16 }}>
+                {children}
+            </div>
+        </Zoom>
+    );
+}
+
+const HomePage = ({ props }) => {
     const classes = useStyles();
     // const [variables, setVariables] = useState('');
-    const { variables, setVariables } = useUI();
+    const { variables } = useUI();
     // const [menuSelected, setMenuSelected] = useState('discount');
     const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
         variables: { ...variables, offset: 0, limit: 20 },
@@ -88,10 +117,11 @@ const HomePage = () => {
 
     const Error = () => (
         <div className={classes.error}>
-            <Typography className={classes.errorText}>Can not found any product. Please try again!</Typography>
-            <Button variant="outlined" color="primary" component={Link} to="/" onClick={() => setVariables(undefined)}>
+            <Typography className={classes.errorText}>Tuotetta ei löytynyt. Yritä uudelleen!</Typography>
+
+            {/* <Button variant="outlined" color="primary" component={Link} to="/" onClick={() => setVariables({})}>
                 Back to Home
-            </Button>
+            </Button> */}
         </div>
     );
 
@@ -102,38 +132,48 @@ const HomePage = () => {
     }, [data]);
 
     if (loading) return <Loading />;
-    if (error || !data || data.products.products.length === 0) return <Error />;
+    // if (error || !data || data.products.products.length === 0) return <Error />;
 
-    console.log(variables);
+    // console.log('VARIABLES', variables);
 
     return (
-        <Container className={classes.container}>
-            {loading && <Loading />}
-            {(error || !data || data.products.products.length === 0) && <Error />}
-            <FilterBar total={data.products.total} />
-            <Grid container spacing={2} justify="center" className={classes.gridContainer}>
-                {data.products &&
-                    data.products.products &&
-                    data.products.products.map((product) => (
-                        <Grid item xs={6} sm={4} md={3} key={product.id} container justify="center">
-                            <ProductCard product={product} />
-                        </Grid>
-                    ))}
-            </Grid>
-            {/* <FilterForm setVariables={setVariables} /> */}
-            {isLoadingMore && data.products.products.length > 0 && (
-                <Button
-                    className={classes.loadMoreButton}
-                    variant="outlined"
-                    // color="secondary"
-                    disabled={loadingMore}
-                    startIcon={loadingMore ? <CircularProgress size={20} /> : <ExpandMoreIcon />}
-                    onClick={handleLoadMore}
-                >
-                    Lataa Lisää
-                </Button>
-            )}
-        </Container>
+        <>
+            <Container className={classes.container} id="top-anchor">
+                <FilterBar total={data && data.products && data.products.total} />
+                {loading && <Loading />}
+                {(error || !data || data.products.products.length === 0) && <Error />}
+
+                <Grid container spacing={2} justify="center" className={classes.gridContainer}>
+                    {data &&
+                        data.products.products &&
+                        data.products.products.map((product) => (
+                            <Grid item xs={6} sm={4} md={3} key={product.id} container justify="center">
+                                <ProductCard product={product} />
+                            </Grid>
+                        ))}
+                </Grid>
+
+                {/* <FilterForm setVariables={setVariables} /> */}
+                {isLoadingMore && data.products.products.length > 0 && (
+                    <Button
+                        className={classes.loadMoreButton}
+                        variant="outlined"
+                        // color="secondary"
+                        disabled={loadingMore}
+                        startIcon={loadingMore ? <CircularProgress size={20} /> : <ExpandMoreIcon />}
+                        onClick={handleLoadMore}
+                    >
+                        Lataa Lisää
+                    </Button>
+                )}
+                <ScrollTop {...props}>
+                    <Fab color="secondary" aria-label="scroll back to top">
+                        <KeyboardArrowUpIcon />
+                    </Fab>
+                </ScrollTop>
+            </Container>
+            {/* <img src={shopBagImg1} alt="bags" className={classes.shopBag1} /> */}
+        </>
     );
 };
 
