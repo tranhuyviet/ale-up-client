@@ -9,6 +9,7 @@ import { useStyles } from './styles';
 // import { Link } from 'react-router-dom';
 import { useUI } from '../../context/uiContext';
 import FilterBar from '../../components/FilterBar/FilterBar';
+import FilterMenu from '../../components/FilterMenu/FilterMenu';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 // import shopBagImg1 from '../../images/shop-bag1.png';
 export const PRODUCTS_FRAGMENT = gql`
@@ -41,7 +42,16 @@ export const GET_PRODUCTS = gql`
     ${PRODUCTS_FRAGMENT}
 `;
 
-const LIMIT = 20;
+export const GET_PRODUCT_INTRODUCE = gql`
+    query getProductIntroduce {
+        productIntroduce {
+            ...ProductFragment
+        }
+    }
+    ${PRODUCTS_FRAGMENT}
+`;
+
+const LIMIT = 24;
 
 function ScrollTop(props) {
     const { children, window } = props;
@@ -77,8 +87,10 @@ const HomePage = ({ props }) => {
     const { variables } = useUI();
     // const [menuSelected, setMenuSelected] = useState('discount');
     const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
-        variables: { ...variables, offset: 0, limit: 20 },
+        variables: { ...variables, offset: 0, limit: LIMIT },
     });
+    const { data: dataIntroduce, loading: loadingIntroduce, error: errorIntroduce } = useQuery(GET_PRODUCT_INTRODUCE);
+
     const [isLoadingMore, setIsLoadingMore] = useState(true);
     const [loadingMore, setLoadingMore] = useState(false);
 
@@ -131,41 +143,56 @@ const HomePage = ({ props }) => {
         }
     }, [data]);
 
-    if (loading) return <Loading />;
+    if (loading || loadingIntroduce) return <Loading />;
     // if (error || !data || data.products.products.length === 0) return <Error />;
 
     // console.log('VARIABLES', variables);
+    console.log(dataIntroduce);
 
     return (
         <>
-            <Container className={classes.container} id="top-anchor">
-                <FilterBar total={data && data.products && data.products.total} />
-                {loading && <Loading />}
-                {(error || !data || data.products.products.length === 0) && <Error />}
-
-                <Grid container spacing={2} justify="center" className={classes.gridContainer}>
-                    {data &&
-                        data.products.products &&
-                        data.products.products.map((product) => (
+            <Container className={classes.container} id="top-anchor" maxWidth="xl">
+                {(loading || loadingIntroduce) && <Loading />}
+                {(error || errorIntroduce || !data || data.products.products.length === 0) && <Error />}
+                <Grid container>
+                    <Grid item sm={2} className={classes.filterMenuContainer}>
+                        <FilterMenu />
+                    </Grid>
+                    <Grid item sm={10} container spacing={2} justify="center" className={classes.gridContainer}>
+                        {/* {dataIntroduce &&
+                        dataIntroduce.productIntroduce &&
+                        dataIntroduce.productIntroduce.map((product) => (
                             <Grid item xs={6} sm={4} md={3} key={product.id} container justify="center">
                                 <ProductCard product={product} />
                             </Grid>
-                        ))}
+                        ))} */}
+                        <Grid item xs={12}>
+                            <FilterBar total={data && data.products && data.products.total} />
+                        </Grid>
+                        {data &&
+                            data.products.products &&
+                            data.products.products.map((product) => (
+                                <Grid item xs={6} sm={6} md={4} lg={3} key={product.id} container justify="center">
+                                    <ProductCard product={product} />
+                                </Grid>
+                            ))}
+                        {isLoadingMore && data.products.products.length > 0 && (
+                            <Button
+                                className={classes.loadMoreButton}
+                                variant="outlined"
+                                // color="secondary"
+                                disabled={loadingMore}
+                                startIcon={loadingMore ? <CircularProgress size={20} /> : <ExpandMoreIcon />}
+                                onClick={handleLoadMore}
+                            >
+                                Lataa Lisää
+                            </Button>
+                        )}
+                    </Grid>
                 </Grid>
 
                 {/* <FilterForm setVariables={setVariables} /> */}
-                {isLoadingMore && data.products.products.length > 0 && (
-                    <Button
-                        className={classes.loadMoreButton}
-                        variant="outlined"
-                        // color="secondary"
-                        disabled={loadingMore}
-                        startIcon={loadingMore ? <CircularProgress size={20} /> : <ExpandMoreIcon />}
-                        onClick={handleLoadMore}
-                    >
-                        Lataa Lisää
-                    </Button>
-                )}
+
                 <ScrollTop {...props}>
                     <Fab color="secondary" aria-label="scroll back to top">
                         <KeyboardArrowUpIcon />

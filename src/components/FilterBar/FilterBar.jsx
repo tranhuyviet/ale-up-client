@@ -114,7 +114,7 @@ const FilterBar = ({ total }) => {
                 </Typography>
             </div>
             <div className={classes.filterActionContainer}>
-                <div className={classes.menu}>
+                {/* <div className={classes.menu}>
                     <Button endIcon={<ArrowDropDownIcon />} variant="outlined" ref={anchorMarketsRef} onClick={handleMarketToggle}>
                         {menuMarketSelected === 'all' ? 'Kaikki Market' : menuMarketSelected}
                     </Button>
@@ -135,7 +135,7 @@ const FilterBar = ({ total }) => {
                                                         key={market.id}
                                                         onClick={(e) => handleMenuSelected(e, market.name)}
                                                         selected={menuMarketSelected === market.name}
-                                                        style={{ textTransform: 'capitalize' }}
+                                                        style={{ textTransform: 'uppercase' }}
                                                     >
                                                         {`${index + 1}. ${market.name}`}{' '}
                                                         {menuMarketSelected === market.name && <CheckIcon className={classes.checkIcon} />}
@@ -147,7 +147,7 @@ const FilterBar = ({ total }) => {
                             </Grow>
                         )}
                     </Popper>
-                </div>
+                </div> */}
                 <div className={classes.menu}>
                     <Button endIcon={<ArrowDropDownIcon />} variant="outlined" ref={anchorSortRef} onClick={handleSortToggle}>
                         {handleSortSelectName(menuSortSelected)}

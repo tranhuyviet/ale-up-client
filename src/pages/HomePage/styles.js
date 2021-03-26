@@ -4,14 +4,17 @@ export const useStyles = makeStyles((theme) => ({
     container: {
         textAlign: 'center',
         minHeight: '100vh',
-        padding: '64px 20px 20px 20px',
+        padding: '64px 20px 0 20px',
         position: 'relative',
         [theme.breakpoints.down('xs')]: {
             padding: '46px 8px 8px 8px',
         },
     },
+    filterMenuContainer: {
+        borderRight: `1px solid ${theme.palette.grey[300]}`,
+    },
     gridContainer: {
-        // padding: 20,
+        padding: '0px 0px 20px 20px',
         [theme.breakpoints.down('xs')]: {
             padding: 8,
         },
@@ -44,6 +47,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     loadMoreButton: {
         marginTop: 20,
+        marginBottom: 20,
         [theme.breakpoints.down('xs')]: {
             marginTop: 8,
             marginBottom: 8,

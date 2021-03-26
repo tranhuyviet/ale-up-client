@@ -10,7 +10,7 @@ const Logo = ({ onClick, text = false }) => {
         <div className={classes.logoContainer}>
             <Avatar src={logo} className={classes.avatar} component={Link} to="/" onClick={onClick} />
             <Typography variant="h6" className={classes.logo} component={Link} to="/" onClick={onClick}>
-                {text ? <span className={classes.logoBody}>ale-up</span> : ''}
+                {text ? <span className={classes.logoBody}>aleup</span> : ''}
             </Typography>
         </div>
     );

@@ -26,10 +26,18 @@ const theme = {
             },
         },
         MuiList: {
-            root: {
-                marginTop: 8,
-                maxHeight: 'calc(100vh * 0.64)',
-                overflow: 'overlay',
+            // root: {
+            //     marginTop: 8,
+            //     maxHeight: 'calc(100vh * 0.64)',
+            //     overflow: 'overlay',
+            // },
+            // padding: {
+            //     paddingTop: 0,
+            // },
+        },
+        MuiListItem: {
+            gutters: {
+                paddingRight: 0,
             },
         },
     },

@@ -13,16 +13,24 @@ const ProductCard = ({ product }) => {
                 <img src={market.logo} alt="logo" height="30px" className={classes.logo} />
             </div>
             <div className={classes.mediaContainer}>
-                <a href={link} target="_blank" rel="noreferrer">
-                    <CardMedia image={imageUrl || noImage} title={name} className={classes.cardMedia} />
-                </a>
+                {/* <a href={link}> */}
+                <CardMedia
+                    image={imageUrl || noImage}
+                    title={name}
+                    className={classes.cardMedia}
+                    onClick={() => {
+                        window.location.href = link;
+                        // window.open(link);
+                    }}
+                />
+                {/* </a> */}
                 <Typography className={classes.discount}>
                     -{discount}
                     <span className={classes.discountPer}>%</span>
                 </Typography>
             </div>
             <CardContent className={classes.cardContent} classes={{ root: classes.cardContentRoot }}>
-                <a href={link} target="_blank" rel="noreferrer" className={classes.link}>
+                <a href={link} className={classes.link}>
                     <Typography className={classes.name}>{name}</Typography>
                 </a>
                 <div className={classes.priceContainer}>

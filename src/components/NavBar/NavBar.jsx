@@ -58,7 +58,7 @@ const NavBar = () => {
                         <div className={classes.inputContainer}>
                             <input
                                 type="text"
-                                placeholder="naisten housut, kala lohi,..."
+                                placeholder="Etsi tuotteita..."
                                 className={classes.searchInput}
                                 ref={nameRef}
                                 onKeyDown={(e) => {
