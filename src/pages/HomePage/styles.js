@@ -64,4 +64,14 @@ export const useStyles = makeStyles((theme) => ({
         left: 0,
         bottom: 0,
     },
+
+    // CHIP
+    chipContainer: {
+        display: 'flex',
+    },
+    chip: {
+        padding: 4,
+        //margin: '16px 8px 0px 0px',
+        textTransform: 'capitalize',
+    },
 }));

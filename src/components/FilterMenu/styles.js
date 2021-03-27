@@ -23,7 +23,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     menuItem: {
         textTransform: 'capitalize',
-        paddingLeft: 30,
+        paddingLeft: '32px!important',
         [theme.breakpoints.down('sm')]: {
             fontSize: 14,
         },

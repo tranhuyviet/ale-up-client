@@ -1,5 +1,5 @@
 import { Slider, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useUI } from '../../context/uiContext';
 import { useStyles } from './styles';
 // import { useQuery } from '@apollo/client';
@@ -31,12 +31,9 @@ const PriceSlider = () => {
         setVariables({ ...variables, price: value });
     };
 
-    // useEffect(() => {
-    //     if (data) {
-    //         setValue([data.productPrice.min, data.productPrice.max]);
-    //         setVariables({ ...variables, price: [data.productPrice.min, data.productPrice.max] });
-    //     }
-    // }, []);
+    useEffect(() => {
+        setValue(variables.price.length > 0 ? variables.price : [0, 5000]);
+    }, [variables.price]);
 
     // console.log(value);
 

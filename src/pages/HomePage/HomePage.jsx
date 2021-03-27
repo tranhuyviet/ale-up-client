@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import ProductCard from '../../components/ProductCard/ProductCard';
 
-import { CircularProgress, Container, Grid, Typography, Button, useScrollTrigger, Zoom, Fab, LinearProgress } from '@material-ui/core';
+import { CircularProgress, Container, Grid, Typography, Button, useScrollTrigger, Zoom, Fab, LinearProgress, Chip } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useStyles } from './styles';
 // import { Link } from 'react-router-dom';
@@ -47,7 +47,7 @@ function ScrollTop(props) {
 const HomePage = ({ props }) => {
     const classes = useStyles();
     // const [variables, setVariables] = useState('');
-    const { variables, filterOpen } = useUI();
+    const { variables, setVariables } = useUI();
     // const [menuSelected, setMenuSelected] = useState('discount');
     const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
         variables: { ...variables, offset: 0, limit: LIMIT },
@@ -110,7 +110,7 @@ const HomePage = ({ props }) => {
     //if (loading || loadingIntroduce) return <Loading />;
     // if (error || !data || data.products.products.length === 0) return <Error />;
 
-    console.log('VARIABLES', variables, filterOpen);
+    // console.log('VARIABLES', variables);
 
     return (
         <>
@@ -130,10 +130,64 @@ const HomePage = ({ props }) => {
                         {loading ? (
                             <Grid item>
                                 <Loading />
+                                {/* {(loading || loadingIntroduce) && <Loading />} */}
                             </Grid>
                         ) : (
-                            <Grid item>
-                                {/* {(loading || loadingIntroduce) && <Loading />} */}
+                            <Grid item container direction="column" style={{ paddingTop: 8 }}>
+                                <Grid item className={classes.chipContainer} container spacing={1}>
+                                    {variables.name !== '' && (
+                                        <Grid item>
+                                            <Chip
+                                                // avatar={<Avatar>N</Avatar>}
+                                                label={`Etsi: ${variables.name}`}
+                                                // color="primary"
+                                                onDelete={() => {
+                                                    setVariables({ ...variables, name: '' });
+                                                }}
+                                                className={classes.chip}
+                                            />
+                                        </Grid>
+                                    )}
+                                    {variables.discount.length > 0 && (
+                                        <Grid item>
+                                            <Chip
+                                                // avatar={<Avatar>N</Avatar>}
+                                                label={`Alennus: -${variables.discount[0]}% -${variables.discount[1]}%`}
+                                                // color="primary"
+                                                onDelete={() => {
+                                                    setVariables({ ...variables, discount: [] });
+                                                }}
+                                                className={classes.chip}
+                                            />
+                                        </Grid>
+                                    )}
+                                    {variables.price.length > 0 && (
+                                        <Grid item>
+                                            <Chip
+                                                // avatar={<Avatar>N</Avatar>}
+                                                label={`Hinta: ${variables.price[0]}€ - ${variables.price[1]}€`}
+                                                // color="primary"
+                                                onDelete={() => {
+                                                    setVariables({ ...variables, price: [] });
+                                                }}
+                                                className={classes.chip}
+                                            />
+                                        </Grid>
+                                    )}
+                                    {variables.market !== 'all' && (
+                                        <Grid item>
+                                            <Chip
+                                                // avatar={<Avatar>N</Avatar>}
+                                                label={`Market: ${variables.market}`}
+                                                // color="primary"
+                                                onDelete={() => {
+                                                    setVariables({ ...variables, market: 'all' });
+                                                }}
+                                                className={classes.chip}
+                                            />
+                                        </Grid>
+                                    )}
+                                </Grid>
                                 <FilterBar total={data && data.products && data.products.total} />
                                 {(error || errorIntroduce || !data || data.products.products.length === 0) && <Error />}
                             </Grid>

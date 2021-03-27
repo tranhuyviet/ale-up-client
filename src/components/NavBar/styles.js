@@ -27,7 +27,7 @@ export const useStyles = makeStyles((theme) => ({
         height: '100%',
     },
     filterIcon: {
-        width: 30,
+        width: 24,
         // marginRight: 8,
         // '&: hover': {
         //     cursors: 'pointer',

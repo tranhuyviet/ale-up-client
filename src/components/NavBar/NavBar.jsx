@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { AppBar, Container, IconButton, Toolbar, useMediaQuery, useTheme } from '@material-ui/core';
 import { useStyles } from './styles';
 
@@ -31,7 +31,7 @@ const NavBar = () => {
     // const [menuOpen, setMenuOpen] = useState(false);
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('xs'));
-    const nameRef = useRef('');
+    const nameRef = useRef(variables.name || '');
     // const [market, setMarket] = useState('all');
 
     // const handleToggleTheme = () => {
@@ -47,6 +47,10 @@ const NavBar = () => {
         });
         // nameRef.current.value = '';
     };
+
+    useEffect(() => {
+        nameRef.current.value = variables.name;
+    }, [variables.name]);
 
     return (
         // <HideOnScroll>

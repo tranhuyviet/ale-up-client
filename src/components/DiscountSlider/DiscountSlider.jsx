@@ -1,5 +1,5 @@
 import { Slider, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useUI } from '../../context/uiContext';
 import { useStyles } from './styles';
 
@@ -29,8 +29,16 @@ const DiscountSlider = () => {
     };
 
     const handleChangeCommitted = () => {
-        setVariables({ ...variables, discount: value });
+        if (value[0] > 0 || value[1] < 100) {
+            setVariables({ ...variables, discount: value });
+        } else {
+            setVariables({ ...variables, discount: [] });
+        }
     };
+
+    useEffect(() => {
+        setValue(variables.discount.length > 0 ? variables.discount : [0, 100]);
+    }, [variables.discount]);
 
     return (
         <div className={classes.discountSlider}>

@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         marginTop: 8,
-        marginBottom: -4,
+        marginBottom: 0,
     },
     text: {
         border: `1px solid ${theme.palette.grey[800]}`,

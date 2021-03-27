@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStyles } from './styles';
 import { GET_MARKET } from '../../graphql';
 import { useQuery } from '@apollo/client';
@@ -20,11 +20,13 @@ const FilterMenu = () => {
         setVariables({ ...variables, market: marketName });
     };
 
+    useEffect(() => {
+        setMenuMarketSelected(variables.market || 'all');
+    }, [variables.market]);
+
     if (loading) return null;
     if (error) return <p>Error get markets...</p>;
     if (!data) return <p>Can not get markets data</p>;
-
-    //console.log(data.markets);
 
     return (
         <div className={classes.filterMenu}>
