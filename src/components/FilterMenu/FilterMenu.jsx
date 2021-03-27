@@ -5,8 +5,9 @@ import { useQuery } from '@apollo/client';
 import { MenuItem, MenuList } from '@material-ui/core';
 import { useUI } from '../../context/uiContext';
 
-import CheckIcon from '@material-ui/icons/Check';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import DiscountSlider from '../DiscountSlider/DiscountSlider';
+
 const FilterMenu = () => {
     const classes = useStyles();
     const { variables, setVariables } = useUI();
@@ -26,10 +27,11 @@ const FilterMenu = () => {
 
     return (
         <div className={classes.filterMenu}>
+            <DiscountSlider />
             <MenuList>
                 <MenuItem selected={menuMarketSelected === 'all'} onClick={() => handleMenuSelected('all')}>
                     {`Kaikki Market (${data.markets.length})`}
-                    {menuMarketSelected === 'all' && <ArrowForwardIosIcon className={classes.checkIcon} classes={{ gutters: classes.gutters }} />}
+                    {menuMarketSelected === 'all' && <ArrowForwardIosIcon className={classes.checkIcon} />}
                 </MenuItem>
                 {data &&
                     data.markets &&
@@ -42,7 +44,7 @@ const FilterMenu = () => {
                         >
                             {/* {`${index + 1}. ${market.name}`}{' '} */}
                             {market.name}
-                            {menuMarketSelected === market.name && <ArrowForwardIosIcon className={classes.checkIcon} classes={{ gutters: classes.gutters }} />}
+                            {menuMarketSelected === market.name && <ArrowForwardIosIcon className={classes.checkIcon} />}
                         </MenuItem>
                     ))}
             </MenuList>

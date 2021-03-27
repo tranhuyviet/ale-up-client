@@ -37,9 +37,9 @@ const FilterBar = ({ total }) => {
     const [menuSortSelected, setMenuSortSelected] = useState(variables.sort || 'discount');
 
     // markets
-    const anchorMarketsRef = useRef(null);
-    const [openMarketMenu, setOpenMarketMenu] = useState(false);
-    const [menuMarketSelected, setMenuMarketSelected] = useState(variables.market || 'all');
+    // const anchorMarketsRef = useRef(null);
+    // const [openMarketMenu, setOpenMarketMenu] = useState(false);
+    // const [menuMarketSelected, setMenuMarketSelected] = useState(variables.market || 'all');
 
     // SORT FUNCTIONS
     const handleSortToggle = () => {
@@ -77,22 +77,22 @@ const FilterBar = ({ total }) => {
     };
 
     // MARKETS FUNCTIONS
-    const handleMarketToggle = () => {
-        setOpenMarketMenu((prevOpen) => !prevOpen);
-    };
+    // const handleMarketToggle = () => {
+    //     setOpenMarketMenu((prevOpen) => !prevOpen);
+    // };
 
-    const handleMarketClose = (event) => {
-        if (anchorMarketsRef.current && anchorMarketsRef.current.contains(event.target)) {
-            return;
-        }
-        setOpenMarketMenu(false);
-    };
+    // const handleMarketClose = (event) => {
+    //     if (anchorMarketsRef.current && anchorMarketsRef.current.contains(event.target)) {
+    //         return;
+    //     }
+    //     setOpenMarketMenu(false);
+    // };
 
-    const handleMenuSelected = (e, marketName) => {
-        setMenuMarketSelected(marketName);
-        setVariables({ ...variables, market: marketName });
-        handleMarketClose(e);
-    };
+    // const handleMenuSelected = (e, marketName) => {
+    //     setMenuMarketSelected(marketName);
+    //     setVariables({ ...variables, market: marketName });
+    //     handleMarketClose(e);
+    // };
 
     // useEffect(() => {
     //     if (data && data.markets) {

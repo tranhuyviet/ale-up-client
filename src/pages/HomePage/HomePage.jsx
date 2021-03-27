@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 import ProductCard from '../../components/ProductCard/ProductCard';
 
@@ -12,44 +12,7 @@ import FilterBar from '../../components/FilterBar/FilterBar';
 import FilterMenu from '../../components/FilterMenu/FilterMenu';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 // import shopBagImg1 from '../../images/shop-bag1.png';
-export const PRODUCTS_FRAGMENT = gql`
-    fragment ProductFragment on Product {
-        id
-        name
-        newPrice
-        oldPrice
-        discount
-        imageUrl
-        link
-        market {
-            id
-            name
-            logo
-        }
-    }
-`;
-
-export const GET_PRODUCTS = gql`
-    query getProducts($name: String, $market: String, $offset: Int, $limit: Int, $sort: String) {
-        products(name: $name, market: $market, offset: $offset, limit: $limit, sort: $sort) {
-            total
-            hasMore
-            products {
-                ...ProductFragment
-            }
-        }
-    }
-    ${PRODUCTS_FRAGMENT}
-`;
-
-export const GET_PRODUCT_INTRODUCE = gql`
-    query getProductIntroduce {
-        productIntroduce {
-            ...ProductFragment
-        }
-    }
-    ${PRODUCTS_FRAGMENT}
-`;
+import { GET_PRODUCTS, GET_PRODUCT_INTRODUCE } from '../../graphql';
 
 const LIMIT = 24;
 
@@ -146,8 +109,7 @@ const HomePage = ({ props }) => {
     if (loading || loadingIntroduce) return <Loading />;
     // if (error || !data || data.products.products.length === 0) return <Error />;
 
-    // console.log('VARIABLES', variables);
-    console.log(dataIntroduce);
+    console.log('VARIABLES', variables);
 
     return (
         <>
