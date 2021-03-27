@@ -8,6 +8,7 @@ const initialState = {
         sort: 'discount',
         market: 'all',
         discount: [],
+        price: [],
     },
 };
 
@@ -26,6 +27,7 @@ const UIContext = createContext({
         sort: 'discount',
         market: 'all',
         discount: [],
+        price: [],
     },
     setVariables: (variables) => {},
     toggleLightDarkTheme: () => {},

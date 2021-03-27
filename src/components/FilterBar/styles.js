@@ -5,6 +5,8 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         marginTop: 16,
+        marginBottom: 16,
+
         [theme.breakpoints.down('xs')]: {
             padding: '4px 8px',
             marginBottom: 0,

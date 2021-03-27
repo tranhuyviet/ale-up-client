@@ -4,10 +4,13 @@ export const useStyles = makeStyles((theme) => ({
     container: {
         textAlign: 'center',
         minHeight: '100vh',
-        padding: '64px 20px 0 20px',
+        padding: '64px 20px 0 0',
         position: 'relative',
         [theme.breakpoints.down('xs')]: {
-            padding: '46px 8px 8px 8px',
+            padding: '46px 8px 8px 0',
+        },
+        [theme.breakpoints.down('sm')]: {
+            padding: '46px 8px 8px 0',
         },
     },
     filterMenuContainer: {
@@ -24,8 +27,8 @@ export const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        minHeight: 250,
-        height: '100vh',
+        //minHeight: 250,
+        //height: '100vh',
         position: 'relative',
         zIndex: 10001,
     },

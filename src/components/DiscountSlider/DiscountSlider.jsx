@@ -8,6 +8,10 @@ const marks = [
         value: 0,
         label: '0',
     },
+    {
+        value: 50,
+        label: '50',
+    },
 
     {
         value: 100,
@@ -30,7 +34,7 @@ const DiscountSlider = () => {
 
     return (
         <div className={classes.discountSlider}>
-            <Typography>Prosentin alennus</Typography>
+            <Typography className={classes.title}>Alennus</Typography>
             <div className={classes.textContainer}>
                 <Typography className={classes.text}>{`-${value[0]}%`}</Typography>
                 <Typography className={classes.text}>{`-${value[1]}%`}</Typography>
@@ -44,7 +48,7 @@ const DiscountSlider = () => {
                 onChangeCommitted={handleChangeCommitted}
                 min={0}
                 max={100}
-                marks={marks}
+                // marks={marks}
             />
         </div>
     );

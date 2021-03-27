@@ -7,6 +7,7 @@ import { useUI } from '../../context/uiContext';
 
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DiscountSlider from '../DiscountSlider/DiscountSlider';
+import PriceSlider from '../PriceSlider/PriceSlider';
 
 const FilterMenu = () => {
     const classes = useStyles();
@@ -28,8 +29,9 @@ const FilterMenu = () => {
     return (
         <div className={classes.filterMenu}>
             <DiscountSlider />
+            <PriceSlider />
             <MenuList>
-                <MenuItem selected={menuMarketSelected === 'all'} onClick={() => handleMenuSelected('all')}>
+                <MenuItem selected={menuMarketSelected === 'all'} onClick={() => handleMenuSelected('all')} className={classes.allMarket}>
                     {`Kaikki Market (${data.markets.length})`}
                     {menuMarketSelected === 'all' && <ArrowForwardIosIcon className={classes.checkIcon} />}
                 </MenuItem>
@@ -40,7 +42,7 @@ const FilterMenu = () => {
                             key={market.id}
                             onClick={() => handleMenuSelected(market.name)}
                             selected={menuMarketSelected === market.name}
-                            style={{ textTransform: 'capitalize', paddingLeft: 30 }}
+                            className={classes.menuItem}
                         >
                             {/* {`${index + 1}. ${market.name}`}{' '} */}
                             {market.name}

@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import ProductCard from '../../components/ProductCard/ProductCard';
 
-import { CircularProgress, Container, Grid, Typography, Button, useScrollTrigger, Zoom, Fab } from '@material-ui/core';
+import { CircularProgress, Container, Grid, Typography, Button, useScrollTrigger, Zoom, Fab, LinearProgress } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useStyles } from './styles';
 // import { Link } from 'react-router-dom';
@@ -86,7 +86,8 @@ const HomePage = ({ props }) => {
 
     const Loading = () => (
         <div className={classes.loading}>
-            <CircularProgress style={{ marginTop: 24 }} />
+            {/* <CircularProgress /> */}
+            <LinearProgress color="primary" style={{ width: '100%' }} />
         </div>
     );
 
@@ -106,7 +107,7 @@ const HomePage = ({ props }) => {
         }
     }, [data]);
 
-    if (loading || loadingIntroduce) return <Loading />;
+    //if (loading || loadingIntroduce) return <Loading />;
     // if (error || !data || data.products.products.length === 0) return <Error />;
 
     console.log('VARIABLES', variables);
@@ -114,13 +115,11 @@ const HomePage = ({ props }) => {
     return (
         <>
             <Container className={classes.container} id="top-anchor" maxWidth="xl">
-                {(loading || loadingIntroduce) && <Loading />}
-                {(error || errorIntroduce || !data || data.products.products.length === 0) && <Error />}
                 <Grid container>
-                    <Grid item sm={2} className={classes.filterMenuContainer}>
+                    <Grid item lg={2} md={3} sm={3} className={classes.filterMenuContainer}>
                         <FilterMenu />
                     </Grid>
-                    <Grid item sm={10} container spacing={2} justify="center" className={classes.gridContainer}>
+                    <Grid item lg={10} md={9} sm={9} container direction="column" className={classes.gridContainer}>
                         {/* {dataIntroduce &&
                         dataIntroduce.productIntroduce &&
                         dataIntroduce.productIntroduce.map((product) => (
@@ -128,27 +127,33 @@ const HomePage = ({ props }) => {
                                 <ProductCard product={product} />
                             </Grid>
                         ))} */}
-                        <Grid item xs={12}>
+                        <Grid item>
+                            {(loading || loadingIntroduce) && <Loading />}
                             <FilterBar total={data && data.products && data.products.total} />
+                            {(error || errorIntroduce || !data || data.products.products.length === 0) && <Error />}
                         </Grid>
-                        {data &&
-                            data.products.products &&
-                            data.products.products.map((product) => (
-                                <Grid item xs={6} sm={6} md={4} lg={3} key={product.id} container justify="center">
-                                    <ProductCard product={product} />
-                                </Grid>
-                            ))}
-                        {isLoadingMore && data.products.products.length > 0 && (
-                            <Button
-                                className={classes.loadMoreButton}
-                                variant="outlined"
-                                // color="secondary"
-                                disabled={loadingMore}
-                                startIcon={loadingMore ? <CircularProgress size={20} /> : <ExpandMoreIcon />}
-                                onClick={handleLoadMore}
-                            >
-                                Lataa Lisää
-                            </Button>
+                        {data && (
+                            <Grid item container spacing={2} justify="center">
+                                {data &&
+                                    data.products.products &&
+                                    data.products.products.map((product) => (
+                                        <Grid item xs={6} sm={6} md={4} lg={3} key={product.id} container justify="center">
+                                            <ProductCard product={product} />
+                                        </Grid>
+                                    ))}
+                                {isLoadingMore && data.products.products.length > 0 && (
+                                    <Button
+                                        className={classes.loadMoreButton}
+                                        variant="outlined"
+                                        // color="secondary"
+                                        disabled={loadingMore}
+                                        startIcon={loadingMore ? <CircularProgress size={20} /> : <ExpandMoreIcon />}
+                                        onClick={handleLoadMore}
+                                    >
+                                        Lataa Lisää
+                                    </Button>
+                                )}
+                            </Grid>
                         )}
                     </Grid>
                 </Grid>

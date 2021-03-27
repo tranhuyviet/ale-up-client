@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
-    discountSlider: {
+    priceSlider: {
         padding: '0px 16px',
     },
     title: {

@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
     card: {
-        width: 300,
+        width: 260,
         '&:hover': {
             boxShadow: theme.shadows[5],
         },
@@ -25,7 +25,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     mediaContainer: {
         width: '100%',
-        // height: '100%',
+        // height: 'auto',
         padding: 20,
         background: theme.palette.common.white,
         position: 'relative',
@@ -61,7 +61,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     cardMedia: {
         width: 'auto',
-        height: 246,
+        height: 226,
         margin: '0 auto',
         [theme.breakpoints.down('md')]: {
             height: 140,
