@@ -9,7 +9,7 @@ const Footer = () => {
     const classes = useStyles();
     const { data, loading, error } = useQuery(GET_MARKET);
 
-    if (loading) return <p>Loading markets...</p>;
+    if (loading) return null;
     if (error) return <p>Error get markets...</p>;
     if (!data) return <p>Can not get markets data</p>;
 

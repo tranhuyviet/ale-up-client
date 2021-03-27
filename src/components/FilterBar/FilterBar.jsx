@@ -102,7 +102,7 @@ const FilterBar = ({ total }) => {
     //     }
     // }, [data]);
 
-    if (loading) return <p>Loading markets...</p>;
+    if (loading) return null;
     if (error) return <p>Error get markets...</p>;
     if (!data) return <p>Can not get markets data</p>;
 
@@ -110,7 +110,7 @@ const FilterBar = ({ total }) => {
         <div className={classes.filterbar}>
             <div className={classes.totalNumberContainer}>
                 <Typography>
-                    <span className={classes.totalNumber}>{total}</span> alennusta tuottetta
+                    <span className={classes.totalNumber}>{total ? total : '0'}</span> tuottetta
                 </Typography>
             </div>
             <div className={classes.filterActionContainer}>
@@ -149,7 +149,7 @@ const FilterBar = ({ total }) => {
                     </Popper>
                 </div> */}
                 <div className={classes.menu}>
-                    <Button endIcon={<ArrowDropDownIcon />} variant="outlined" ref={anchorSortRef} onClick={handleSortToggle}>
+                    <Button endIcon={<ArrowDropDownIcon />} variant="outlined" ref={anchorSortRef} onClick={handleSortToggle} className={classes.menuButton}>
                         {handleSortSelectName(menuSortSelected)}
                     </Button>
                     <Popper open={openSortMenu} anchorEl={anchorSortRef.current} role={undefined} transition>

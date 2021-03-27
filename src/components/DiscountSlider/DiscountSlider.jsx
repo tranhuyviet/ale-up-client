@@ -3,25 +3,25 @@ import React, { useState } from 'react';
 import { useUI } from '../../context/uiContext';
 import { useStyles } from './styles';
 
-const marks = [
-    {
-        value: 0,
-        label: '0',
-    },
-    {
-        value: 50,
-        label: '50',
-    },
+// const marks = [
+//     {
+//         value: 0,
+//         label: '0',
+//     },
+//     {
+//         value: 50,
+//         label: '50',
+//     },
 
-    {
-        value: 100,
-        label: '100',
-    },
-];
+//     {
+//         value: 100,
+//         label: '100',
+//     },
+// ];
 
 const DiscountSlider = () => {
     const classes = useStyles();
-    const { variables, setVariables } = useUI();
+    const { variables, setVariables, handleFilterOpen } = useUI();
     const [value, setValue] = useState(variables.discount.length > 0 ? variables.discount : [0, 100]);
 
     const handleChange = (event, newValue) => {
@@ -45,7 +45,10 @@ const DiscountSlider = () => {
                 //valueLabelDisplay="on"
                 aria-labelledby="range-slider"
                 getAriaValueText={() => 'cac'}
-                onChangeCommitted={handleChangeCommitted}
+                onChangeCommitted={() => {
+                    handleChangeCommitted();
+                    handleFilterOpen(false);
+                }}
                 min={0}
                 max={100}
                 // marks={marks}

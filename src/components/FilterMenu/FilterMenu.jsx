@@ -11,7 +11,7 @@ import PriceSlider from '../PriceSlider/PriceSlider';
 
 const FilterMenu = () => {
     const classes = useStyles();
-    const { variables, setVariables } = useUI();
+    const { variables, setVariables, handleFilterOpen } = useUI();
     const [menuMarketSelected, setMenuMarketSelected] = useState(variables.market || 'all');
     const { data, loading, error } = useQuery(GET_MARKET);
 
@@ -20,18 +20,25 @@ const FilterMenu = () => {
         setVariables({ ...variables, market: marketName });
     };
 
-    if (loading) return <p>Loading markets...</p>;
+    if (loading) return null;
     if (error) return <p>Error get markets...</p>;
     if (!data) return <p>Can not get markets data</p>;
 
-    console.log(data.markets);
+    //console.log(data.markets);
 
     return (
         <div className={classes.filterMenu}>
             <DiscountSlider />
             <PriceSlider />
             <MenuList>
-                <MenuItem selected={menuMarketSelected === 'all'} onClick={() => handleMenuSelected('all')} className={classes.allMarket}>
+                <MenuItem
+                    selected={menuMarketSelected === 'all'}
+                    onClick={() => {
+                        handleMenuSelected('all');
+                        handleFilterOpen(false);
+                    }}
+                    className={classes.allMarket}
+                >
                     {`Kaikki Market (${data.markets.length})`}
                     {menuMarketSelected === 'all' && <ArrowForwardIosIcon className={classes.checkIcon} />}
                 </MenuItem>
@@ -40,7 +47,10 @@ const FilterMenu = () => {
                     data.markets.map((market, index) => (
                         <MenuItem
                             key={market.id}
-                            onClick={() => handleMenuSelected(market.name)}
+                            onClick={() => {
+                                handleMenuSelected(market.name);
+                                handleFilterOpen(false);
+                            }}
                             selected={menuMarketSelected === market.name}
                             className={classes.menuItem}
                         >

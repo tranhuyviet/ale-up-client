@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
     discountSlider: {
-        padding: '0px 16px',
+        padding: '0px 20px',
     },
     title: {
         fontWeight: 'bold',
@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         marginTop: 8,
-        marginBottom: 8,
+        marginBottom: -4,
     },
     text: {
         border: `1px solid ${theme.palette.grey[800]}`,

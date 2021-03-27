@@ -13,14 +13,12 @@ export const useStyles = makeStyles((theme) => ({
         },
     },
     menuHeader: {
-        backgroundColor: theme.palette.primary.main,
-        height: 64,
+        // backgroundColor: theme.palette.primary.main,
+        padding: '2px 0 2px 12px',
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        [theme.breakpoints.down('xs')]: {
-            height: 56,
-        },
+        borderBottom: `1px solid ${theme.palette.grey[300]}`,
     },
     listItemText: {
         textAlign: 'center',

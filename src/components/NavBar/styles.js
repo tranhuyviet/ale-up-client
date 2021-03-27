@@ -26,6 +26,13 @@ export const useStyles = makeStyles((theme) => ({
         // height: '40px!important',
         height: '100%',
     },
+    filterIcon: {
+        width: 30,
+        // marginRight: 8,
+        // '&: hover': {
+        //     cursors: 'pointer',
+        // },
+    },
     logoContainer: {
         width: 180,
     },

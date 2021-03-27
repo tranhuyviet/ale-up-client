@@ -61,7 +61,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     cardMedia: {
         width: 'auto',
-        height: 226,
+        height: 205,
         margin: '0 auto',
         [theme.breakpoints.down('md')]: {
             height: 140,

@@ -7,14 +7,17 @@ export const useStyles = makeStyles((theme) => ({
         padding: '64px 20px 0 0',
         position: 'relative',
         [theme.breakpoints.down('xs')]: {
-            padding: '46px 8px 8px 0',
+            padding: '46px 8px 8px 8px',
         },
         [theme.breakpoints.down('sm')]: {
-            padding: '46px 8px 8px 0',
+            padding: '46px 8px 8px 8px',
         },
     },
     filterMenuContainer: {
         borderRight: `1px solid ${theme.palette.grey[300]}`,
+        [theme.breakpoints.down('xs')]: {
+            display: 'none',
+        },
     },
     gridContainer: {
         padding: '0px 0px 20px 20px',

@@ -47,7 +47,7 @@ function ScrollTop(props) {
 const HomePage = ({ props }) => {
     const classes = useStyles();
     // const [variables, setVariables] = useState('');
-    const { variables } = useUI();
+    const { variables, filterOpen } = useUI();
     // const [menuSelected, setMenuSelected] = useState('discount');
     const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
         variables: { ...variables, offset: 0, limit: LIMIT },
@@ -110,16 +110,16 @@ const HomePage = ({ props }) => {
     //if (loading || loadingIntroduce) return <Loading />;
     // if (error || !data || data.products.products.length === 0) return <Error />;
 
-    console.log('VARIABLES', variables);
+    console.log('VARIABLES', variables, filterOpen);
 
     return (
         <>
-            <Container className={classes.container} id="top-anchor" maxWidth="xl">
+            <Container className={classes.container} id="top-anchor" maxWidth="lg">
                 <Grid container>
                     <Grid item lg={2} md={3} sm={3} className={classes.filterMenuContainer}>
                         <FilterMenu />
                     </Grid>
-                    <Grid item lg={10} md={9} sm={9} container direction="column" className={classes.gridContainer}>
+                    <Grid item lg={10} md={9} sm={9} xs={12} container direction="column" className={classes.gridContainer}>
                         {/* {dataIntroduce &&
                         dataIntroduce.productIntroduce &&
                         dataIntroduce.productIntroduce.map((product) => (
@@ -127,11 +127,17 @@ const HomePage = ({ props }) => {
                                 <ProductCard product={product} />
                             </Grid>
                         ))} */}
-                        <Grid item>
-                            {(loading || loadingIntroduce) && <Loading />}
-                            <FilterBar total={data && data.products && data.products.total} />
-                            {(error || errorIntroduce || !data || data.products.products.length === 0) && <Error />}
-                        </Grid>
+                        {loading ? (
+                            <Grid item>
+                                <Loading />
+                            </Grid>
+                        ) : (
+                            <Grid item>
+                                {/* {(loading || loadingIntroduce) && <Loading />} */}
+                                <FilterBar total={data && data.products && data.products.total} />
+                                {(error || errorIntroduce || !data || data.products.products.length === 0) && <Error />}
+                            </Grid>
+                        )}
                         {data && (
                             <Grid item container spacing={2} justify="center">
                                 {data &&

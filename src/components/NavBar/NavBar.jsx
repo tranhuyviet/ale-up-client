@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { AppBar, Container, Toolbar } from '@material-ui/core';
+import { AppBar, Container, IconButton, Toolbar, useMediaQuery, useTheme } from '@material-ui/core';
 import { useStyles } from './styles';
 
 // import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
@@ -11,6 +11,8 @@ import { useUI } from '../../context/uiContext';
 // import { NavLink } from 'react-router-dom';
 // import MenuBar from '../MenuBar/MenuBar';
 import Logo from '../Logo/Logo';
+import { ReactComponent as FilterIcon } from '../../images/filter.svg';
+import MenuBar from '../MenuBar/MenuBar';
 
 // function HideOnScroll(props) {
 //     const { children, window } = props;
@@ -25,10 +27,10 @@ import Logo from '../Logo/Logo';
 
 const NavBar = () => {
     const classes = useStyles();
-    const { setVariables, variables } = useUI();
+    const { setVariables, variables, handleFilterOpen, filterOpen } = useUI();
     // const [menuOpen, setMenuOpen] = useState(false);
-    // const theme = useTheme();
-    // const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('xs'));
     const nameRef = useRef('');
     // const [market, setMarket] = useState('all');
 
@@ -51,6 +53,14 @@ const NavBar = () => {
         <AppBar className={classes.appbar} position="fixed">
             <Container className={classes.container}>
                 <Toolbar className={classes.toolbar} disableGutters id="back-to-top-anchor">
+                    {matches && (
+                        <>
+                            <IconButton onClick={() => handleFilterOpen(true)}>
+                                <FilterIcon className={classes.filterIcon} />
+                            </IconButton>
+                            <MenuBar menuOpen={filterOpen} setMenuOpen={handleFilterOpen} anchor="left" />
+                        </>
+                    )}
                     <div className={classes.logoContainer}>
                         <Logo text />
                     </div>

@@ -31,7 +31,7 @@ const UIContext = createContext({
     },
     setVariables: (variables) => {},
     toggleLightDarkTheme: () => {},
-    handleFilterOpen: (setOpen) => {},
+    handleFilterOpen: () => {},
 });
 
 // Types
