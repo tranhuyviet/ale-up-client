@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 export const GET_MARKET = gql`
     query getMarkets {
         markets {
-            id
+            _id
             name
             logo
         }
@@ -12,7 +12,7 @@ export const GET_MARKET = gql`
 
 export const PRODUCTS_FRAGMENT = gql`
     fragment ProductFragment on Product {
-        id
+        _id
         name
         newPrice
         oldPrice
@@ -20,7 +20,7 @@ export const PRODUCTS_FRAGMENT = gql`
         imageUrl
         link
         market {
-            id
+            _id
             name
             logo
         }

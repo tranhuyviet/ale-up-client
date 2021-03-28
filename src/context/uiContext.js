@@ -5,7 +5,7 @@ const initialState = {
     filterOpen: false,
     variables: {
         name: '',
-        sort: 'discount',
+        sort: 'dayDeal',
         market: 'all',
         discount: [],
         price: [],
@@ -24,7 +24,7 @@ const UIContext = createContext({
     filterOpen: false,
     variables: {
         name: '',
-        sort: 'discount',
+        sort: 'dayDeal',
         market: 'all',
         discount: [],
         price: [],

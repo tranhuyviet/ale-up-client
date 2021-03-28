@@ -39,6 +39,8 @@ export const useStyles = makeStyles((theme) => ({
         },
     },
     menuButton: {
+        display: 'flex',
+        alignItems: 'center',
         [theme.breakpoints.down('xs')]: {
             fontSize: 12,
             padding: '4px 12px',
@@ -47,5 +49,9 @@ export const useStyles = makeStyles((theme) => ({
     checkIcon: {
         color: theme.palette.success.main,
         marginLeft: 8,
+    },
+    updateIcon: {
+        color: theme.palette.primary.main,
+        marginRight: 8,
     },
 }));

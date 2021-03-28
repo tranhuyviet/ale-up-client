@@ -48,7 +48,7 @@ const FilterMenu = () => {
                     data.markets &&
                     data.markets.map((market, index) => (
                         <MenuItem
-                            key={market.id}
+                            key={market._id}
                             onClick={() => {
                                 handleMenuSelected(market.name);
                                 handleFilterOpen(false);

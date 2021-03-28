@@ -1,40 +1,20 @@
 import React, { useState, useRef } from 'react';
-import { gql, useQuery } from '@apollo/client';
-import { Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper, Typography } from '@material-ui/core';
+import { Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper, Typography, Zoom } from '@material-ui/core';
 import { useStyles } from './styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 // import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import CheckIcon from '@material-ui/icons/Check';
 import { useUI } from '../../context/uiContext';
-
-export const GET_MARKET = gql`
-    query getMarkets {
-        markets {
-            id
-            name
-            logo
-        }
-    }
-`;
-
-//  const sorts = [
-//     { name: 'Alennettu Hinta', sort: 'discount' },
-//     { name: 'Hinta, edullisin', sort: 'priceAO' },
-//     { name: 'Hinta, kallein', sort: 'priceOA' },
-//     { name: 'Nimi, A-Ö', sort: 'nameAO' },
-//     { name: 'Nimi, Ö-A', sort: 'nameOA' },
-// ];
+import UpdateIcon from '@material-ui/icons/Update';
 
 const FilterBar = ({ total }) => {
     const classes = useStyles();
     const { variables, setVariables } = useUI();
 
-    const { data, loading, error } = useQuery(GET_MARKET);
-
     // sort
     const anchorSortRef = useRef(null);
     const [openSortMenu, setOpenSortMenu] = useState(false);
-    const [menuSortSelected, setMenuSortSelected] = useState(variables.sort || 'discount');
+    const [menuSortSelected, setMenuSortSelected] = useState(variables.sort || 'dayDeal');
 
     // markets
     // const anchorMarketsRef = useRef(null);
@@ -55,12 +35,18 @@ const FilterBar = ({ total }) => {
 
     const handleSortSelected = (e, name) => {
         setMenuSortSelected(name);
-        setVariables({ ...variables, sort: name });
+        if (name === 'dayDeal') {
+            setVariables({ ...variables, sort: name, market: 'all' });
+        } else {
+            setVariables({ ...variables, sort: name });
+        }
         handleSortClose(e);
     };
 
     const handleSortSelectName = (name) => {
         switch (name) {
+            case 'dayDeal':
+                return 'Päivän Tarjoukset';
             case 'discount':
                 return 'Alennettu Hinta';
             case 'priceAO':
@@ -72,39 +58,9 @@ const FilterBar = ({ total }) => {
             case 'nameOA':
                 return 'Nimi, Ö-A';
             default:
-                return 'Alennettu Hinta';
+                return 'Päivän Tarjoukset';
         }
     };
-
-    // MARKETS FUNCTIONS
-    // const handleMarketToggle = () => {
-    //     setOpenMarketMenu((prevOpen) => !prevOpen);
-    // };
-
-    // const handleMarketClose = (event) => {
-    //     if (anchorMarketsRef.current && anchorMarketsRef.current.contains(event.target)) {
-    //         return;
-    //     }
-    //     setOpenMarketMenu(false);
-    // };
-
-    // const handleMenuSelected = (e, marketName) => {
-    //     setMenuMarketSelected(marketName);
-    //     setVariables({ ...variables, market: marketName });
-    //     handleMarketClose(e);
-    // };
-
-    // useEffect(() => {
-    //     if (data && data.markets) {
-    //         setMenuMarketSelected(data.markets.name);
-    //     } else {
-    //         setMenuMarketSelected('all');
-    //     }
-    // }, [data]);
-
-    if (loading) return null;
-    if (error) return <p>Error get markets...</p>;
-    if (!data) return <p>Can not get markets data</p>;
 
     return (
         <div className={classes.filterbar}>
@@ -114,42 +70,15 @@ const FilterBar = ({ total }) => {
                 </Typography>
             </div>
             <div className={classes.filterActionContainer}>
-                {/* <div className={classes.menu}>
-                    <Button endIcon={<ArrowDropDownIcon />} variant="outlined" ref={anchorMarketsRef} onClick={handleMarketToggle}>
-                        {menuMarketSelected === 'all' ? 'Kaikki Market' : menuMarketSelected}
-                    </Button>
-                    <Popper open={openMarketMenu} anchorEl={anchorMarketsRef.current} transition style={{ maxHeight: 300 }}>
-                        {({ TransitionProps, placement }) => (
-                            <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}>
-                                <Paper>
-                                    <ClickAwayListener onClickAway={handleMarketClose}>
-                                        <MenuList autoFocusItem={openMarketMenu} id="menu-list-grow">
-                                            <MenuItem selected={menuMarketSelected === 'all'} onClick={(e) => handleMenuSelected(e, 'all')}>
-                                                {`Kaikki Market (${data.markets.length})`}
-                                                {menuMarketSelected === 'all' && <CheckIcon className={classes.checkIcon} />}
-                                            </MenuItem>
-                                            {data &&
-                                                data.markets &&
-                                                data.markets.map((market, index) => (
-                                                    <MenuItem
-                                                        key={market.id}
-                                                        onClick={(e) => handleMenuSelected(e, market.name)}
-                                                        selected={menuMarketSelected === market.name}
-                                                        style={{ textTransform: 'uppercase' }}
-                                                    >
-                                                        {`${index + 1}. ${market.name}`}{' '}
-                                                        {menuMarketSelected === market.name && <CheckIcon className={classes.checkIcon} />}
-                                                    </MenuItem>
-                                                ))}
-                                        </MenuList>
-                                    </ClickAwayListener>
-                                </Paper>
-                            </Grow>
-                        )}
-                    </Popper>
-                </div> */}
                 <div className={classes.menu}>
                     <Button endIcon={<ArrowDropDownIcon />} variant="outlined" ref={anchorSortRef} onClick={handleSortToggle} className={classes.menuButton}>
+                        {menuSortSelected === 'dayDeal' ? (
+                            <Zoom in>
+                                <UpdateIcon className={classes.updateIcon} />
+                            </Zoom>
+                        ) : (
+                            ''
+                        )}
                         {handleSortSelectName(menuSortSelected)}
                     </Button>
                     <Popper open={openSortMenu} anchorEl={anchorSortRef.current} role={undefined} transition>
@@ -158,6 +87,9 @@ const FilterBar = ({ total }) => {
                                 <Paper>
                                     <ClickAwayListener onClickAway={handleSortClose}>
                                         <MenuList autoFocusItem={openSortMenu} id="menu-list-grow">
+                                            <MenuItem onClick={(e) => handleSortSelected(e, 'dayDeal')} selected={menuSortSelected === 'dayDeal'}>
+                                                Päivän Tarjoukset {menuSortSelected === 'dayDeal' && <CheckIcon className={classes.checkIcon} />}
+                                            </MenuItem>
                                             <MenuItem onClick={(e) => handleSortSelected(e, 'discount')} selected={menuSortSelected === 'discount'}>
                                                 Alennettu Hinta {menuSortSelected === 'discount' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>

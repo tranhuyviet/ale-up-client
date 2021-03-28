@@ -3,7 +3,7 @@ import { useStyles } from './styles';
 import Logo from '../Logo/Logo';
 import { Container, CssBaseline, Grid } from '@material-ui/core';
 import { useQuery } from '@apollo/client';
-import { GET_MARKET } from '../FilterBar/FilterBar';
+import { GET_MARKET } from '../../graphql';
 
 const Footer = () => {
     const classes = useStyles();
@@ -30,7 +30,7 @@ const Footer = () => {
                         {data &&
                             data.markets &&
                             data.markets.map((market) => (
-                                <Grid item key={market.id}>
+                                <Grid item key={market._id}>
                                     <img src={market.logo} alt="market" height="30px" className={classes.marketLogo} />
                                 </Grid>
                             ))}
