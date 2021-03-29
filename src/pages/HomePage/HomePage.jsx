@@ -12,8 +12,8 @@ import FilterBar from '../../components/FilterBar/FilterBar';
 import FilterMenu from '../../components/FilterMenu/FilterMenu';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 // import shopBagImg1 from '../../images/shop-bag1.png';
-import { GET_PRODUCTS, GET_PRODUCT_INTRODUCE } from '../../graphql';
-import Hero from '../../components/Hero/Hero';
+import { GET_PRODUCTS } from '../../graphql';
+// import Hero from '../../components/Hero/Hero';
 
 const LIMIT = 24;
 
@@ -53,7 +53,6 @@ const HomePage = ({ props }) => {
     const { data, loading, error, fetchMore } = useQuery(GET_PRODUCTS, {
         variables: { ...variables, offset: 0, limit: LIMIT },
     });
-    const { data: dataIntroduce, loading: loadingIntroduce, error: errorIntroduce } = useQuery(GET_PRODUCT_INTRODUCE);
 
     const [isLoadingMore, setIsLoadingMore] = useState(true);
     const [loadingMore, setLoadingMore] = useState(false);
@@ -121,7 +120,7 @@ const HomePage = ({ props }) => {
                         <FilterMenu />
                     </Grid>
                     <Grid item lg={10} md={9} sm={9} xs={12} container direction="column" className={classes.gridContainer}>
-                        {loading || loadingIntroduce ? (
+                        {loading ? (
                             <Grid item>
                                 <Loading />
                                 {/* {(loading || loadingIntroduce) && <Loading />} */}
@@ -183,18 +182,11 @@ const HomePage = ({ props }) => {
                                     )}
                                 </Grid>
                                 <FilterBar total={data && data.products && data.products.total} />
-                                {(error || errorIntroduce || !data || data.products.products.length === 0) && <Error />}
+                                {(error || !data || data.products.products.length === 0) && <Error />}
                             </Grid>
                         )}
                         {data && (
                             <Grid item container spacing={2} justify="center">
-                                {/* {dataIntroduce &&
-                                    dataIntroduce.productIntroduce &&
-                                    dataIntroduce.productIntroduce.map((product) => (
-                                        <Grid item xs={6} sm={6} md={4} lg={3} key={product._id} container justify="center">
-                                            <ProductCard product={product} />
-                                        </Grid>
-                                    ))} */}
                                 {data &&
                                     data.products.products &&
                                     data.products.products.map((product) => (

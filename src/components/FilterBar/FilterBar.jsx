@@ -47,8 +47,10 @@ const FilterBar = ({ total }) => {
         switch (name) {
             case 'dayDeal':
                 return 'Päivän Tarjoukset';
-            case 'discount':
-                return 'Alennettu Hinta';
+            case 'discountOA':
+                return 'Isoin Alennus';
+            case 'discountAO':
+                return 'Pienin Alennus';
             case 'priceAO':
                 return 'Hinta, edullisin';
             case 'priceOA':
@@ -90,8 +92,11 @@ const FilterBar = ({ total }) => {
                                             <MenuItem onClick={(e) => handleSortSelected(e, 'dayDeal')} selected={menuSortSelected === 'dayDeal'}>
                                                 Päivän Tarjoukset {menuSortSelected === 'dayDeal' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
-                                            <MenuItem onClick={(e) => handleSortSelected(e, 'discount')} selected={menuSortSelected === 'discount'}>
-                                                Alennettu Hinta {menuSortSelected === 'discount' && <CheckIcon className={classes.checkIcon} />}
+                                            <MenuItem onClick={(e) => handleSortSelected(e, 'discountOA')} selected={menuSortSelected === 'discountOA'}>
+                                                Isoin Alennus {menuSortSelected === 'discountOA' && <CheckIcon className={classes.checkIcon} />}
+                                            </MenuItem>
+                                            <MenuItem onClick={(e) => handleSortSelected(e, 'discountAO')} selected={menuSortSelected === 'discountAO'}>
+                                                Pienin Alennus {menuSortSelected === 'discountAO' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
                                             <MenuItem onClick={(e) => handleSortSelected(e, 'priceAO')} selected={menuSortSelected === 'priceAO'}>
                                                 Hinta, edullisin {menuSortSelected === 'priceAO' && <CheckIcon className={classes.checkIcon} />}
