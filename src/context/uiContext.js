@@ -4,6 +4,7 @@ const initialState = {
     toggleTheme: 'light',
     filterOpen: false,
     variables: {
+        tag: 'all',
         name: '',
         sort: 'dayDeal',
         market: 'all',
@@ -23,6 +24,7 @@ const UIContext = createContext({
     toggleTheme: '',
     filterOpen: false,
     variables: {
+        tag: 'all',
         name: '',
         sort: 'dayDeal',
         market: 'all',

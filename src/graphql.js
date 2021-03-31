@@ -1,5 +1,14 @@
 import { gql } from '@apollo/client';
 
+export const GET_TAGS = gql`
+    query getTags {
+        tags {
+            _id
+            tag
+        }
+    }
+`;
+
 export const GET_MARKET = gql`
     query getMarkets {
         markets {
@@ -28,8 +37,8 @@ export const PRODUCTS_FRAGMENT = gql`
 `;
 
 export const GET_PRODUCTS = gql`
-    query getProducts($name: String, $market: String, $discount: [Int!], $price: [Int!], $offset: Int, $limit: Int, $sort: String) {
-        products(name: $name, market: $market, discount: $discount, price: $price, offset: $offset, limit: $limit, sort: $sort) {
+    query getProducts($tag: String, $name: String, $market: String, $discount: [Int!], $price: [Int!], $offset: Int, $limit: Int, $sort: String) {
+        products(tag: $tag, name: $name, market: $market, discount: $discount, price: $price, offset: $offset, limit: $limit, sort: $sort) {
             total
             hasMore
             products {

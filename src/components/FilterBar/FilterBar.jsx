@@ -89,25 +89,53 @@ const FilterBar = ({ total }) => {
                                 <Paper>
                                     <ClickAwayListener onClickAway={handleSortClose}>
                                         <MenuList autoFocusItem={openSortMenu} id="menu-list-grow">
-                                            <MenuItem onClick={(e) => handleSortSelected(e, 'dayDeal')} selected={menuSortSelected === 'dayDeal'}>
+                                            <MenuItem
+                                                onClick={(e) => handleSortSelected(e, 'dayDeal')}
+                                                selected={menuSortSelected === 'dayDeal'}
+                                                className={classes.menuItem}
+                                            >
                                                 Päivän Tarjoukset {menuSortSelected === 'dayDeal' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
-                                            <MenuItem onClick={(e) => handleSortSelected(e, 'discountOA')} selected={menuSortSelected === 'discountOA'}>
+                                            <MenuItem
+                                                onClick={(e) => handleSortSelected(e, 'discountOA')}
+                                                selected={menuSortSelected === 'discountOA'}
+                                                className={classes.menuItem}
+                                            >
                                                 Isoin Alennus {menuSortSelected === 'discountOA' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
-                                            <MenuItem onClick={(e) => handleSortSelected(e, 'discountAO')} selected={menuSortSelected === 'discountAO'}>
+                                            <MenuItem
+                                                onClick={(e) => handleSortSelected(e, 'discountAO')}
+                                                selected={menuSortSelected === 'discountAO'}
+                                                className={classes.menuItem}
+                                            >
                                                 Pienin Alennus {menuSortSelected === 'discountAO' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
-                                            <MenuItem onClick={(e) => handleSortSelected(e, 'priceAO')} selected={menuSortSelected === 'priceAO'}>
+                                            <MenuItem
+                                                onClick={(e) => handleSortSelected(e, 'priceAO')}
+                                                selected={menuSortSelected === 'priceAO'}
+                                                className={classes.menuItem}
+                                            >
                                                 Hinta, edullisin {menuSortSelected === 'priceAO' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
-                                            <MenuItem onClick={(e) => handleSortSelected(e, 'priceOA')} selected={menuSortSelected === 'priceOA'}>
+                                            <MenuItem
+                                                onClick={(e) => handleSortSelected(e, 'priceOA')}
+                                                selected={menuSortSelected === 'priceOA'}
+                                                className={classes.menuItem}
+                                            >
                                                 Hinta, kallein {menuSortSelected === 'priceOA' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
-                                            <MenuItem onClick={(e) => handleSortSelected(e, 'nameAO')} selected={menuSortSelected === 'nameAO'}>
+                                            <MenuItem
+                                                onClick={(e) => handleSortSelected(e, 'nameAO')}
+                                                selected={menuSortSelected === 'nameAO'}
+                                                className={classes.menuItem}
+                                            >
                                                 Nimi, A-Ö {menuSortSelected === 'nameAO' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
-                                            <MenuItem onClick={(e) => handleSortSelected(e, 'nameOA')} selected={menuSortSelected === 'nameOA'}>
+                                            <MenuItem
+                                                onClick={(e) => handleSortSelected(e, 'nameOA')}
+                                                selected={menuSortSelected === 'nameOA'}
+                                                className={classes.menuItem}
+                                            >
                                                 Nimi, Ö-A {menuSortSelected === 'nameOA' && <CheckIcon className={classes.checkIcon} />}
                                             </MenuItem>
                                         </MenuList>

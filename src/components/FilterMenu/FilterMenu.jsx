@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useStyles } from './styles';
 import { GET_MARKET } from '../../graphql';
 import { useQuery } from '@apollo/client';
-import { MenuItem, MenuList } from '@material-ui/core';
+import { Checkbox, MenuItem, MenuList } from '@material-ui/core';
 import { useUI } from '../../context/uiContext';
 
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DiscountSlider from '../DiscountSlider/DiscountSlider';
 import PriceSlider from '../PriceSlider/PriceSlider';
+import Tags from '../Tags/Tags';
+
+// import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
+// import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 
 const FilterMenu = () => {
     const classes = useStyles();
@@ -32,6 +36,7 @@ const FilterMenu = () => {
         <div className={classes.filterMenu}>
             <DiscountSlider />
             <PriceSlider />
+            <Tags />
             <MenuList>
                 <MenuItem
                     selected={menuMarketSelected === 'all'}
@@ -41,6 +46,7 @@ const FilterMenu = () => {
                     }}
                     className={classes.allMarket}
                 >
+                    <Checkbox checked={menuMarketSelected === 'all' ? true : false} color="primary" />
                     {`Kaikki Market (${data.markets.length})`}
                     {menuMarketSelected === 'all' && <ArrowForwardIosIcon className={classes.checkIcon} />}
                 </MenuItem>
@@ -57,6 +63,7 @@ const FilterMenu = () => {
                             className={classes.menuItem}
                         >
                             {/* {`${index + 1}. ${market.name}`}{' '} */}
+                            {/* {<img src={market.logo} alt="logo" className={classes.marketLogo} />} */}
                             {market.name}
                             {menuMarketSelected === market.name && <ArrowForwardIosIcon className={classes.checkIcon} />}
                         </MenuItem>

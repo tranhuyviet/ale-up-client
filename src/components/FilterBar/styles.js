@@ -54,4 +54,7 @@ export const useStyles = makeStyles((theme) => ({
         color: theme.palette.primary.main,
         marginRight: 8,
     },
+    menuItem: {
+        padding: '8px 16px',
+    },
 }));

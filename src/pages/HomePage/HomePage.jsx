@@ -110,7 +110,7 @@ const HomePage = ({ props }) => {
     //if (loading || loadingIntroduce) return <Loading />;
     // if (error || !data || data.products.products.length === 0) return <Error />;
 
-    // console.log('VARIABLES', variables);
+    console.log('VARIABLES', variables);
 
     return (
         <>
@@ -162,6 +162,19 @@ const HomePage = ({ props }) => {
                                                 // color="primary"
                                                 onDelete={() => {
                                                     setVariables({ ...variables, price: [] });
+                                                }}
+                                                className={classes.chip}
+                                            />
+                                        </Grid>
+                                    )}
+                                    {variables.tag !== 'all' && (
+                                        <Grid item>
+                                            <Chip
+                                                // avatar={<Avatar>N</Avatar>}
+                                                label={`Kategoria: ${variables.tag}`}
+                                                // color="primary"
+                                                onDelete={() => {
+                                                    setVariables({ ...variables, tag: 'all' });
                                                 }}
                                                 className={classes.chip}
                                             />

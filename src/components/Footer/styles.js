@@ -29,6 +29,6 @@ export const useStyles = makeStyles((theme) => ({
         color: 'inherit',
     },
     marketLogo: {
-        padding: 5,
+        padding: 3,
     },
 }));

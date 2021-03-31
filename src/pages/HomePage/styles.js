@@ -15,6 +15,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     filterMenuContainer: {
         borderRight: `1px solid ${theme.palette.grey[300]}`,
+        borderLeft: `1px solid ${theme.palette.grey[300]}`,
         [theme.breakpoints.down('xs')]: {
             display: 'none',
         },

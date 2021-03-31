@@ -38,6 +38,7 @@ const theme = {
         MuiListItem: {
             gutters: {
                 paddingRight: 0,
+                paddingLeft: 4,
             },
         },
     },

@@ -1,14 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
-    filterMenu: {
-        width: '100%',
-        paddingTop: 16,
-        //paddingRight: 24,
-        textAlign: 'left',
-        [theme.breakpoints.down('xs')]: {
-            paddingRight: 1,
-        },
+    tags: {
+        // padding: '0px 16px',
     },
     checkIcon: {
         color: theme.palette.primary.main,
