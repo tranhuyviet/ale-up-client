@@ -9,6 +9,24 @@ export const GET_TAGS = gql`
     }
 `;
 
+export const GET_MARKETS_BY_TAG = gql`
+    query getMarketsByTag($tag: String) {
+        marketsByTag(tag: $tag) {
+            _id
+            name
+        }
+    }
+`;
+
+export const GET_TAGS_BY_MARKET = gql`
+    query getTagsByMarket($market: String) {
+        tagsByMarket(market: $market) {
+            _id
+            name
+        }
+    }
+`;
+
 export const GET_MARKET = gql`
     query getMarkets {
         markets {

@@ -41,6 +41,14 @@ const theme = {
                 paddingLeft: 4,
             },
         },
+        MuiButton: {
+            root: {
+                '&:selected': {
+                    color: '#ff0000',
+                    backgroundColor: '#ff0000',
+                },
+            },
+        },
     },
 };
 

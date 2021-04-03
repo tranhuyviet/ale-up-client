@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useStyles } from './styles';
 import { GET_TAGS } from '../../graphql';
 import { useQuery } from '@apollo/client';
-import { Checkbox, FormControlLabel, FormGroup, MenuItem, MenuList } from '@material-ui/core';
+import { Checkbox, MenuItem, MenuList } from '@material-ui/core';
 import { useUI } from '../../context/uiContext';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
@@ -38,7 +38,8 @@ const Tags = () => {
                     className={classes.allMarket}
                 >
                     <Checkbox checked={menuTagSelected === 'all' ? true : false} color="primary" />
-                    {`Kaikki Kategoria (${data.tags.length})`}
+                    {`Kaikki Kategoria`}
+                    {/* {`Kaikki Kategoria (${data.tags.length})`} */}
                     {menuTagSelected === 'all' && <ArrowForwardIosIcon className={classes.checkIcon} />}
                 </MenuItem>
                 {data &&

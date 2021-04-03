@@ -47,7 +47,8 @@ const FilterMenu = () => {
                     className={classes.allMarket}
                 >
                     <Checkbox checked={menuMarketSelected === 'all' ? true : false} color="primary" />
-                    {`Kaikki Market (${data.markets.length})`}
+                    {`Kaikki Market`}
+                    {/* {`Kaikki Market (${data.markets.length})`} */}
                     {menuMarketSelected === 'all' && <ArrowForwardIosIcon className={classes.checkIcon} />}
                 </MenuItem>
                 {data &&
