@@ -22,7 +22,7 @@ export const GET_TAGS_BY_MARKET = gql`
     query getTagsByMarket($market: String) {
         tagsByMarket(market: $market) {
             _id
-            name
+            tag
         }
     }
 `;

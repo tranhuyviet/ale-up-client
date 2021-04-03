@@ -13,7 +13,8 @@ import FilterMenu from '../../components/FilterMenu/FilterMenu';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 // import shopBagImg1 from '../../images/shop-bag1.png';
 import { GET_PRODUCTS } from '../../graphql';
-import TagsAndMarketsBar from '../../components/TagsAndMarketsBar/TagsAndMarketsBar';
+import MarketsByTag from '../../components/MarketsByTag/MarketsByTag';
+import TagsByMarket from '../../components/TagsByMarket/TagsByMarket';
 // import Hero from '../../components/Hero/Hero';
 
 const LIMIT = 24;
@@ -196,7 +197,8 @@ const HomePage = ({ props }) => {
                                     )}
                                 </Grid>
                                 <FilterBar total={data && data.products && data.products.total} />
-                                <TagsAndMarketsBar />
+                                <MarketsByTag />
+                                <TagsByMarket />
                                 {(error || !data || data.products.products.length === 0) && <Error />}
                             </Grid>
                         )}
