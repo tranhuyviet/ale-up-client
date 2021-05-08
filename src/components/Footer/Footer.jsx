@@ -20,8 +20,8 @@ const Footer = () => {
                 <Logo />
                 <p className={classes.copy}>
                     {`© ${new Date().getFullYear()} `}
-                    <a href="https://www.viet.fi" target="_blank" rel="noreferrer" className={classes.link}>
-                        www.viet.fi
+                    <a href="https://www.aleup.fi" target="_blank" rel="noreferrer" className={classes.link}>
+                        aleup
                     </a>
                 </p>
                 <p style={{ margin: 0, paddingBottom: 8 }}>Tämän verkkosivuston sisältö on lainattu:</p>

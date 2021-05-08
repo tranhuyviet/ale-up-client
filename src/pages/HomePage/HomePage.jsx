@@ -112,7 +112,7 @@ const HomePage = ({ props }) => {
     //if (loading || loadingIntroduce) return <Loading />;
     // if (error || !data || data.products.products.length === 0) return <Error />;
 
-    console.log('VARIABLES', variables);
+    // console.log('VARIABLES', variables);
 
     return (
         <>
@@ -197,8 +197,10 @@ const HomePage = ({ props }) => {
                                     )}
                                 </Grid>
                                 <FilterBar total={data && data.products && data.products.total} />
-                                <MarketsByTag />
-                                <TagsByMarket />
+                                <div className={classes.tagsAndMarketsContainer}>
+                                    <MarketsByTag />
+                                    <TagsByMarket />
+                                </div>
                                 {(error || !data || data.products.products.length === 0) && <Error />}
                             </Grid>
                         )}

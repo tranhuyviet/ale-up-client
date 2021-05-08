@@ -75,4 +75,8 @@ export const useStyles = makeStyles((theme) => ({
         //margin: '16px 8px 0px 0px',
         textTransform: 'capitalize',
     },
+    tagsAndMarketsContainer: {
+        display: 'flex',
+        alignItems: 'center',
+    },
 }));
