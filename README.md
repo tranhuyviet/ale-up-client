@@ -1,70 +1,20 @@
-# Getting Started with Create React App
+# Aleup Project: https://www.aleup.fi/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A website synthesizing products that are on sale at the markets. When users visit my website, they can find answers to questions like these:
+How many products are on sale now?
+- Which market is on sale for those products?
+- Which products are having the most discounts?
+- Where can I search for a product and can see which markets are offering it on sale?
+- Can I compare the price of the product I'm interested in if there are multiple markets discounting the product?
+- Can I directly access the product on the marketplace website for more information or to shop online?
+- Can I get an email (or message) notification of the products I'm interested in when they get a discount?
+- Can I pay online through this website if I choose to buy many products from many different markets? (Currently, I have to go to the specific website of each market and pay for that market. If this website is an intermediary payment channel then great)
 
-## Available Scripts
+to find the answers to the above questions except for question 7 and 8 (these features may be updated in the future)
 
-In the project directory, you can run:
+## Benefit of project could bring to a client:
+Client will have a useful tool to see or search for discounted product, compare the price of that item. Instead of having to go to each market website to see or read daily newspaper ads. When market prices are easily searched and compared, markets will offer discounts to compete. This means that client benefit.
 
-### `npm start`
+## Technologies:
+Reactjs, Apollo Client, Graphql, MaterialUI 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
