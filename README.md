@@ -1,4 +1,4 @@
-# Aleup Project: https://www.aleup.fi/
+# Aleup Project: https://www.aleup.fi/ (front-end)
 
 A website synthesizing products that are on sale at the markets. When users visit my website, they can find answers to questions like these:
 How many products are on sale now?
