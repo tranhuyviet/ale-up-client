@@ -18,3 +18,5 @@ Client will have a useful tool to see or search for discounted product, compare 
 ## Technologies:
 Reactjs, Apollo Client, Graphql, MaterialUI 
 
+## Video demo project:
+[![Watch the video]](https://www.youtube.com/watch?v=PNGamxSIm9E)
