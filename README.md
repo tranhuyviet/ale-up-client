@@ -19,4 +19,4 @@ Client will have a useful tool to see or search for discounted product, compare 
 Reactjs, Apollo Client, Graphql, MaterialUI 
 
 ## Video demo project:
-[![Watch the video]](https://www.youtube.com/watch?v=PNGamxSIm9E)
+[![Watch the video](https://i9.ytimg.com/vi/PNGamxSIm9E/mq1.jpg?sqp=CMD8u4sG&rs=AOn4CLBXB3qqtKfWfs6IoAaZeK73-udWqQ)](https://www.youtube.com/watch?v=PNGamxSIm9E)
