@@ -18,5 +18,7 @@ Client will have a useful tool to see or search for discounted product, compare 
 ## Technologies:
 Reactjs, Apollo Client, Graphql, MaterialUI 
 
+## Backend: (https://github.com/tranhuyviet/ale-up-server)
+
 ## Video demo project:
 [![Watch the video](https://i9.ytimg.com/vi/PNGamxSIm9E/mq1.jpg?sqp=CMD8u4sG&rs=AOn4CLBXB3qqtKfWfs6IoAaZeK73-udWqQ)](https://www.youtube.com/watch?v=PNGamxSIm9E)
